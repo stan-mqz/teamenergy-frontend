@@ -1,6 +1,7 @@
 import { getSections } from '../api/section6.api';
 import { createHero } from '../components/hero';
 import { createSection } from '../components/section';
+import { createQuiz } from "../components/quiz";
 
 function showLoader(app) {
     app.innerHTML = `
@@ -60,6 +61,8 @@ export async function loadLightPage() {
                 : createSection(section);
             app.appendChild(el);
         });
+        const quiz = await createQuiz();
+        app.appendChild(quiz);
 
     } catch (err) {
         console.error(err);

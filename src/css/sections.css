@@ -466,24 +466,25 @@
 .anim-shadow-obj {
     font-size: 5rem;
     position: absolute;
-    top: 10px;
+    top: 80px;
     animation: shadowJump 1.8s ease-in-out infinite;
 }
 
 .anim-shadow-ground {
     width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, .15);
+    height: 3px;
+    background: rgba(0, 0, 0, .15);
     border-radius: 4px;
     margin-bottom: 6px;
 }
 
 .anim-shadow-cast {
-    width: 90px;
-    height: 18px;
-    background: rgba(0, 0, 0, .5);
+    width: 120px;
+    height: 26px;
+    background: rgba(0, 0, 0, .75);
     border-radius: 50%;
-    filter: blur(4px);
+    filter: blur(8px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .35);
     animation: shadowCast 1.8s ease-in-out infinite;
 }
 
@@ -587,4 +588,39 @@
         transform: translateX(6px);
         opacity: .7;
     }
+}
+
+/* ═══════════════════════════════════════════════
+   Sección de sombras: fondo claro
+═══════════════════════════════════════════════ */
+
+.planet-section[data-anim="shadow"] {
+    background: #ffffff;
+}
+
+.planet-section[data-anim="shadow"] .planet-title {
+    color: #111827;
+}
+
+.planet-section[data-anim="shadow"] .planet-body {
+    color: rgba(17, 24, 39, 0.75);
+}
+
+.planet-section[data-anim="shadow"] .fun-fact {
+    background: rgba(0, 0, 0, 0.04);
+    color: rgba(17, 24, 39, 0.75);
+}
+
+.planet-section[data-anim="shadow"] .planet-tag {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+    color: #111827;
+}
+
+.planet-section[data-anim="shadow"] .visual-card {
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 2px 8px rgba(0, 0, 0, 0.14);
 }
