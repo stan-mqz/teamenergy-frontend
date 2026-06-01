@@ -41,3 +41,8 @@ export async function validateAnswers(
 
     return await response.json();
 }
+
+export async function getStats() {
+    const response = await fetch(`${API_URL}/api/section6/stats`);
+    return await response.json();
+}

@@ -1,8 +1,8 @@
-import "../css/style.css";
-import "../css/hero.css";
-import "../css/sections.css";
-import "../css/quiz.css";
+import "../css/section6.style.css";
+import "../css/section6.hero.css";
+import "../css/section6.sections.css";
+import "../css/section6.quiz.css";
 
-import { loadLightPage } from "./pages/light.page";
+import { loadLightPage } from "./pages/section6.page";
 
 loadLightPage();

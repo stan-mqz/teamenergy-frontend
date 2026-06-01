@@ -1,0 +1,302 @@
+/* ═══════════════════════════════════════════════
+   STATS — Tablero de misión
+   Coherente con el tema Cosmos Crayón
+═══════════════════════════════════════════════ */
+
+.stats-section {
+    padding: 6rem clamp(1.5rem, 5vw, 5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Blob decorativo igual que planet-section */
+.stats-section::before {
+    content: '';
+    position: absolute;
+    width: min(500px, 100vw);
+    height: min(500px, 100vw);
+    border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+    background: #A78BFA;
+    opacity: .07;
+    pointer-events: none;
+    right: -15%;
+    top: -10%;
+    animation: blobMorph 12s ease-in-out infinite alternate;
+}
+
+/* ── Header ──────────────────────────────────── */
+.stats-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stats-eyebrow {
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #A78BFA;
+}
+
+.stats-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #fff;
+    line-height: 1.05;
+}
+
+.stats-section-label {
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .3);
+    margin-top: .5rem;
+}
+
+/* ── Métricas globales ───────────────────────── */
+.stats-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+}
+
+.stats-metric-card {
+    background: rgba(255, 255, 255, .05);
+    border: 1.5px solid rgba(255, 255, 255, .08);
+    border-radius: var(--radius-card);
+    padding: 1.2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stats-metric-label {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .4);
+}
+
+.stats-metric-value {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    line-height: 1;
+    color: #fff;
+}
+
+.stats-metric-value.good {
+    color: #00E5A0;
+}
+
+.stats-metric-value.warn {
+    color: #FFD93D;
+}
+
+.stats-metric-value.bad {
+    color: #FF6B6B;
+}
+
+/* ── Cards por pregunta ──────────────────────── */
+.stats-q-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.stats-q-card {
+    background: rgba(255, 255, 255, .04);
+    border: 1.5px solid rgba(255, 255, 255, .09);
+    border-radius: 20px;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: background .25s, border-color .25s;
+}
+
+.stats-q-card:hover {
+    background: rgba(255, 255, 255, .07);
+    border-color: rgba(255, 255, 255, .18);
+}
+
+.stats-q-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.stats-q-num {
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, .3);
+    white-space: nowrap;
+    padding-top: 3px;
+    min-width: 22px;
+}
+
+.stats-q-text {
+    font-size: .98rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .88);
+    line-height: 1.55;
+    flex: 1;
+}
+
+.stats-q-badge {
+    flex-shrink: 0;
+    font-size: .75rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    letter-spacing: .5px;
+}
+
+.stats-q-badge.good {
+    background: rgba(0, 229, 160, .15);
+    color: #00E5A0;
+    border: 1.5px solid rgba(0, 229, 160, .3);
+}
+
+.stats-q-badge.warn {
+    background: rgba(255, 217, 61, .15);
+    color: #FFD93D;
+    border: 1.5px solid rgba(255, 217, 61, .3);
+}
+
+.stats-q-badge.bad {
+    background: rgba(255, 107, 107, .15);
+    color: #FF6B6B;
+    border: 1.5px solid rgba(255, 107, 107, .3);
+}
+
+/* Barra de progreso */
+.stats-q-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stats-q-bar-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, .08);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+
+.stats-q-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-pill);
+    transition: width 1s cubic-bezier(.4, 0, .2, 1);
+}
+
+.stats-q-bar-fill.good {
+    background: #00E5A0;
+}
+
+.stats-q-bar-fill.warn {
+    background: #FFD93D;
+}
+
+.stats-q-bar-fill.bad {
+    background: #FF6B6B;
+}
+
+.stats-q-total {
+    font-size: .75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .3);
+    white-space: nowrap;
+}
+
+/* Conteo correctas / incorrectas */
+.stats-q-counts {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stats-q-count {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .4);
+}
+
+.stats-q-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.stats-q-dot.good {
+    background: #00E5A0;
+}
+
+.stats-q-dot.bad {
+    background: #FF6B6B;
+}
+
+/* ── Gráfico ─────────────────────────────────── */
+.stats-chart-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stats-chart-legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stats-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .78rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .4);
+}
+
+.stats-legend-sq {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.stats-legend-sq.good {
+    background: #00E5A0;
+}
+
+.stats-legend-sq.bad {
+    background: #FF6B6B;
+}
+
+.stats-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+/* ── Error ───────────────────────────────────── */
+.stats-error {
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(255, 107, 107, .7);
+    padding: 1.5rem;
+    border: 1.5px dashed rgba(255, 107, 107, .3);
+    border-radius: 16px;
+    text-align: center;
+}

@@ -1,10 +1,12 @@
 import { getSections } from '../api/section6.api';
-import { createHero } from '../components/hero';
-import { createSection } from '../components/section';
-import { createQuiz } from "../components/quiz";
+import { createHero } from '../components/section6.hero';
+import { createSection } from '../components/section6.section';
+import { createQuiz } from "../components/section6.quiz";
+import { createStats } from "../components/section6.stats";
+
 
 function showLoader(app) {
-    app.innerHTML = `
+  app.innerHTML = `
     <div style="
       min-height:100vh; display:flex; flex-direction:column;
       align-items:center; justify-content:center; gap:1.2rem;
@@ -21,7 +23,7 @@ function showLoader(app) {
 }
 
 function showError(app) {
-    app.innerHTML = `
+  app.innerHTML = `
     <div style="
       min-height:100vh; display:flex; flex-direction:column;
       align-items:center; justify-content:center; gap:1rem;
@@ -44,28 +46,29 @@ function showError(app) {
 }
 
 export async function loadLightPage() {
-    const app = document.querySelector('#app');
-    showLoader(app);
+  const app = document.querySelector('#app');
+  showLoader(app);
 
-    try {
-        const response = await getSections();
-        if (!response.ok || !Array.isArray(response.data)) throw new Error('API error');
+  try {
+    const response = await getSections();
+    if (!response.ok || !Array.isArray(response.data)) throw new Error('API error');
 
-        app.innerHTML = '';
+    app.innerHTML = '';
 
-        const sorted = [...response.data].sort((a, b) => a.position_order - b.position_order);
+    const sorted = [...response.data].sort((a, b) => a.position_order - b.position_order);
 
-        sorted.forEach(section => {
-            const el = section.type === 'hero'
-                ? createHero(section)
-                : createSection(section);
-            app.appendChild(el);
-        });
-        const quiz = await createQuiz();
-        app.appendChild(quiz);
+    sorted.forEach(section => {
+      const el = section.type === 'hero'
+        ? createHero(section)
+        : createSection(section);
+      app.appendChild(el);
+    });
+    const quiz = await createQuiz();
+    app.appendChild(quiz);
 
-    } catch (err) {
-        console.error(err);
-        showError(app);
-    }
+
+  } catch (err) {
+    console.error(err);
+    showError(app);
+  }
 }
