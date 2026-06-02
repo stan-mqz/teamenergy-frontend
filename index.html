@@ -1,21 +1,62 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ciencias 2do Grado</title>
+  </head>
+  <body>
+    <div class="container">
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+      <header>
+        <h1>⚡ Ciencias · 2do Grado</h1>
+        <p class="header-sub">Selecciona una sección para comenzar</p>
+      </header>
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <main>
+        <div class="lessons-grid">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>teamenergy-frontend</title>
-</head>
+          <div class="lesson-card locked">
+            <span class="lesson-number">Sección 1</span>
+            <p>Energía Mecánica</p>
+            <span class="lock-icon">🔒</span>
+          </div>
 
-<body>
-  <div id="app"></div>
-  <script type="module" src="/src/js/main.js"></script>
-</body>
+          <div class="lesson-card locked">
+            <span class="lesson-number">Sección 2</span>
+            <p>Energía Eléctrica</p>
+            <span class="lock-icon">🔒</span>
+          </div>
 
+          <div class="lesson-card locked">
+            <span class="lesson-number">Sección 3</span>
+            <p>Energía Térmica</p>
+            <span class="lock-icon">🔒</span>
+          </div>
+
+          <div class="lesson-card locked">
+            <span class="lesson-number">Sección 4</span>
+            <p>Estados de la Materia</p>
+            <span class="lock-icon">🔒</span>
+          </div>
+
+          <div class="lesson-card locked">
+            <span class="lesson-number">Sección 5</span>
+            <p>Transformaciones</p>
+            <span class="lock-icon">🔒</span>
+          </div>
+
+          <div class="lesson-card active" id="lesson-6-btn">
+            <span class="lesson-number">Sección 6</span>
+            <p>La Luz</p>
+            <span class="action-badge">¡Explorar!</span>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
 </html>

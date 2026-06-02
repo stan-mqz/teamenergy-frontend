@@ -6,6 +6,7 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, "index.html"),
+                section6: resolve(__dirname, "section6.html"),
                 stats: resolve(__dirname, "stats.html"),
             },
         },

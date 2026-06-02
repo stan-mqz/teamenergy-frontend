@@ -1,8 +1,7 @@
-import "../css/section6.style.css";
-import "../css/section6.hero.css";
-import "../css/section6.sections.css";
-import "../css/section6.quiz.css";
+import "../css/menu.style.css";
 
-import { loadLightPage } from "./pages/section6.page";
+const lesson6Btn = document.getElementById("lesson-6-btn");
 
-loadLightPage();
+lesson6Btn.addEventListener("click", () => {
+    window.location.href = "/section6.html";
+});
