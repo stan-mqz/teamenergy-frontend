@@ -1,14 +1,15 @@
 :root {
-    --bg-color: #f6efe4;
-    --bg-soft: #fff9f0;
-    --card-bg: #fffaf2;
-    --text-color: #382b22;
-    --text-muted: #7b6a5d;
-    --accent-clay: #b86f4f;
-    --accent-olive: #6f7d4d;
-    --accent-gold: #d7a84d;
-    --border-soft: #e7d6c1;
-    --shadow-soft: rgba(95, 70, 45, .14);
+    --bg-color: #f1f8ff;
+    --bg-soft: #f8fcff;
+    --card-bg: #ffffff;
+    --text-color: #24364b;
+    --text-muted: #5c6f82;
+    --accent-sky: #4f9fd8;
+    --accent-mint: #4ca97d;
+    --accent-sun: #f4bf4f;
+    --accent-coral: #e97a6d;
+    --border-soft: #d8e8f4;
+    --shadow-soft: rgba(63, 111, 150, .14);
 }
 
 *,
@@ -21,7 +22,7 @@
 
 body {
     background:
-        linear-gradient(135deg, rgba(255, 250, 242, .92), rgba(239, 224, 205, .9)),
+        linear-gradient(135deg, rgba(248, 252, 255, .96), rgba(239, 248, 244, .94) 52%, rgba(255, 249, 229, .9)),
         var(--bg-color);
     color: var(--text-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -44,7 +45,7 @@ header {
 }
 
 header h1 {
-    color: var(--accent-clay);
+    color: var(--accent-sky);
     font-size: clamp(1.8rem, 5vw, 2.6rem);
     margin-bottom: .4rem;
     line-height: 1.1;
@@ -100,39 +101,39 @@ header h1 {
 
 .lesson-card.available:hover {
     transform: translateY(-3px);
-    border-color: rgba(111, 125, 77, .45);
-    box-shadow: 0 16px 34px rgba(95, 70, 45, .18);
+    border-color: rgba(76, 169, 125, .45);
+    box-shadow: 0 16px 34px rgba(63, 111, 150, .16);
 }
 
 /* ── Estado activo ───────────────────────────── */
 .lesson-card.active {
-    border-color: rgba(184, 111, 79, .58);
+    border-color: rgba(79, 159, 216, .58);
     cursor: pointer;
-    background: #fff6ea;
+    background: #f8fcff;
 }
 
 .lesson-card.active:hover {
     transform: translateY(-4px);
-    box-shadow: 0 18px 38px rgba(184, 111, 79, .2);
-    background-color: #fff2df;
+    box-shadow: 0 18px 38px rgba(79, 159, 216, .2);
+    background-color: #eef8ff;
 }
 
 .lesson-card.active .lesson-number {
-    color: var(--accent-clay);
+    color: var(--accent-sky);
 }
 
 .action-badge {
     font-size: .75rem;
-    background-color: rgba(111, 125, 77, .12);
-    color: var(--accent-olive);
+    background-color: rgba(76, 169, 125, .13);
+    color: #32785a;
     padding: 4px 10px;
     border-radius: 8px;
     font-weight: 700;
 }
 
 .action-badge.muted {
-    background-color: rgba(215, 168, 77, .14);
-    color: #8b6530;
+    background-color: rgba(244, 191, 79, .18);
+    color: #8a6419;
 }
 
 /* ── Responsive ──────────────────────────────── */

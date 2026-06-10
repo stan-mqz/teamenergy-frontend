@@ -53,7 +53,7 @@
     font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(56, 43, 34, .48);
+    color: rgba(36, 54, 75, .48);
     margin-top: .5rem;
 }
 
@@ -65,8 +65,8 @@
 }
 
 .stats-metric-card {
-    background: rgba(255, 250, 242, .84);
-    border: 1.5px solid rgba(122, 91, 71, .13);
+    background: rgba(255, 255, 255, .86);
+    border: 1.5px solid rgba(79, 159, 216, .13);
     border-radius: var(--radius-card);
     padding: 1.2rem 1rem;
     display: flex;
@@ -79,7 +79,7 @@
     font-weight: 700;
     letter-spacing: .8px;
     text-transform: uppercase;
-    color: rgba(56, 43, 34, .52);
+    color: rgba(36, 54, 75, .52);
 }
 
 .stats-metric-value {
@@ -109,8 +109,8 @@
 }
 
 .stats-q-card {
-    background: rgba(255, 250, 242, .82);
-    border: 1.5px solid rgba(122, 91, 71, .13);
+    background: rgba(255, 255, 255, .84);
+    border: 1.5px solid rgba(79, 159, 216, .13);
     border-radius: 8px;
     padding: 1.2rem 1.4rem;
     display: flex;
@@ -120,8 +120,8 @@
 }
 
 .stats-q-card:hover {
-    background: rgba(255, 246, 234, .96);
-    border-color: rgba(184, 111, 79, .26);
+    background: rgba(239, 248, 255, .96);
+    border-color: rgba(79, 159, 216, .28);
 }
 
 .stats-q-top {
@@ -134,7 +134,7 @@
     font-size: .72rem;
     font-weight: 800;
     letter-spacing: 1px;
-    color: rgba(56, 43, 34, .42);
+    color: rgba(36, 54, 75, .42);
     white-space: nowrap;
     padding-top: 3px;
     min-width: 22px;
@@ -143,7 +143,7 @@
 .stats-q-text {
     font-size: .98rem;
     font-weight: 700;
-    color: rgba(56, 43, 34, .9);
+    color: rgba(36, 54, 75, .9);
     line-height: 1.55;
     flex: 1;
 }
@@ -158,21 +158,21 @@
 }
 
 .stats-q-badge.good {
-    background: rgba(111, 125, 77, .14);
+    background: rgba(124, 203, 162, .18);
     color: var(--mint-deep);
-    border: 1.5px solid rgba(111, 125, 77, .28);
+    border: 1.5px solid rgba(63, 142, 107, .26);
 }
 
 .stats-q-badge.warn {
-    background: rgba(215, 168, 77, .16);
-    color: #8b6530;
-    border: 1.5px solid rgba(215, 168, 77, .32);
+    background: rgba(244, 191, 79, .18);
+    color: #8a6419;
+    border: 1.5px solid rgba(244, 191, 79, .32);
 }
 
 .stats-q-badge.bad {
-    background: rgba(201, 119, 95, .16);
+    background: rgba(242, 139, 130, .18);
     color: var(--coral-deep);
-    border: 1.5px solid rgba(201, 119, 95, .3);
+    border: 1.5px solid rgba(198, 94, 86, .28);
 }
 
 /* Barra de progreso */
@@ -185,7 +185,7 @@
 .stats-q-bar-track {
     flex: 1;
     height: 8px;
-    background: rgba(122, 91, 71, .1);
+    background: rgba(79, 159, 216, .1);
     border-radius: var(--radius-pill);
     overflow: hidden;
 }
@@ -211,7 +211,7 @@
 .stats-q-total {
     font-size: .75rem;
     font-weight: 700;
-    color: rgba(56, 43, 34, .48);
+    color: rgba(36, 54, 75, .48);
     white-space: nowrap;
 }
 
@@ -228,7 +228,7 @@
     gap: 6px;
     font-size: .8rem;
     font-weight: 700;
-    color: rgba(56, 43, 34, .58);
+    color: rgba(36, 54, 75, .58);
 }
 
 .stats-q-dot {
@@ -265,7 +265,7 @@
     gap: 6px;
     font-size: .78rem;
     font-weight: 700;
-    color: rgba(56, 43, 34, .58);
+    color: rgba(36, 54, 75, .58);
 }
 
 .stats-legend-sq {
@@ -295,7 +295,7 @@
     font-weight: 700;
     color: var(--coral-deep);
     padding: 1.5rem;
-    border: 1.5px dashed rgba(159, 84, 63, .3);
+    border: 1.5px dashed rgba(198, 94, 86, .3);
     border-radius: 8px;
     text-align: center;
 }

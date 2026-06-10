@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap');
 
 :root {
-    --night: #4a382c;
-    --night-mid: #7a5b47;
-    --night-deep: #f6efe4;
+    --night: #24364b;
+    --night-mid: #5c6f82;
+    --night-deep: #f1f8ff;
 
-    --sun: #d7a84d;
-    --sun-deep: #b86f4f;
-    --mint: #6f7d4d;
-    --mint-deep: #536138;
-    --sky: #7a9aa0;
-    --sky-deep: #55747a;
-    --coral: #c9775f;
-    --coral-deep: #9f543f;
-    --violet: #9b7f68;
-    --violet-deep: #705845;
-    --lime: #9aa66a;
-    --lime-deep: #6f7d4d;
+    --sun: #f4bf4f;
+    --sun-deep: #e59a49;
+    --mint: #7ccba2;
+    --mint-deep: #3f8e6b;
+    --sky: #7db9e8;
+    --sky-deep: #3d7faa;
+    --coral: #f28b82;
+    --coral-deep: #c65e56;
+    --violet: #b9a7e8;
+    --violet-deep: #7665a8;
+    --lime: #a8d672;
+    --lime-deep: #6a9847;
 
-    --text-bright: #382b22;
-    --text-soft: rgba(56, 43, 34, 0.72);
+    --text-bright: #24364b;
+    --text-soft: rgba(36, 54, 75, 0.72);
 
     --font-display: 'Fredoka One', cursive;
     --font-body: 'Nunito', sans-serif;
@@ -43,7 +43,7 @@ html {
 body {
     font-family: var(--font-body);
     background:
-        linear-gradient(180deg, #fff9f0 0%, var(--night-deep) 42%, #efe0cd 100%);
+        linear-gradient(180deg, #f8fcff 0%, var(--night-deep) 46%, #f4fbf7 100%);
     color: var(--text-bright);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -54,8 +54,8 @@ body::before {
     position: fixed;
     inset: 0;
     background-image:
-        linear-gradient(rgba(122, 91, 71, .05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(122, 91, 71, .04) 1px, transparent 1px);
+        linear-gradient(rgba(79, 159, 216, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 159, 216, .04) 1px, transparent 1px);
     background-size: 48px 48px;
     opacity: .55;
     pointer-events: none;

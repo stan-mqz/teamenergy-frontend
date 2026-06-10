@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════
    HERO — "La Luz llega al cosmos"
-   Paleta: luz cálida + tonos tierra suaves
+   Paleta: aula clara + acentos infantiles calmados
 ═══════════════════════════════════════════════ */
 
 .hero {
@@ -14,7 +14,7 @@
     position: relative;
     overflow: hidden;
     background:
-        linear-gradient(180deg, rgba(255, 249, 240, .98) 0%, rgba(246, 239, 228, .94) 72%, rgba(239, 224, 205, .95) 100%);
+        linear-gradient(180deg, rgba(248, 252, 255, .98) 0%, rgba(241, 248, 255, .96) 58%, rgba(244, 251, 247, .96) 100%);
 }
 
 /* Halo solar de fondo */
@@ -28,8 +28,8 @@
     height: min(700px, 130vw);
     border-radius: 50%;
     background: radial-gradient(circle,
-            rgba(215, 168, 77, .24) 0%,
-            rgba(184, 111, 79, .08) 42%,
+            rgba(244, 191, 79, .28) 0%,
+            rgba(125, 185, 232, .12) 44%,
             transparent 70%);
     pointer-events: none;
 }
@@ -45,7 +45,7 @@
     top: -100px;
     left: -80px;
     background: radial-gradient(circle,
-            rgba(167, 139, 250, .15) 0%, transparent 65%);
+            rgba(185, 167, 232, .15) 0%, transparent 65%);
     animation: orbDrift1 12s ease-in-out infinite;
 }
 
@@ -55,7 +55,7 @@
     bottom: -60px;
     right: -50px;
     background: radial-gradient(circle,
-            rgba(56, 189, 248, .18) 0%, transparent 65%);
+            rgba(125, 185, 232, .18) 0%, transparent 65%);
     animation: orbDrift2 9s ease-in-out infinite;
 }
 
@@ -65,7 +65,7 @@
     top: 20%;
     right: 10%;
     background: radial-gradient(circle,
-            rgba(0, 229, 160, .2) 0%, transparent 65%);
+            rgba(124, 203, 162, .18) 0%, transparent 65%);
     animation: orbDrift3 7s ease-in-out infinite;
 }
 
@@ -152,8 +152,8 @@
     gap: 6px;
     padding: 6px 18px;
     border-radius: var(--radius-pill);
-    background: rgba(215, 168, 77, .14);
-    border: 1.5px solid rgba(184, 111, 79, .24);
+    background: rgba(244, 191, 79, .16);
+    border: 1.5px solid rgba(79, 159, 216, .22);
     font-size: .78rem;
     font-weight: 700;
     letter-spacing: 1.2px;
@@ -166,7 +166,7 @@
     font-size: clamp(5rem, 14vw, 9rem);
     line-height: 1;
     animation: sunSpin 20s linear infinite, sunBounce 4s ease-in-out infinite;
-    filter: drop-shadow(0 14px 32px rgba(184, 111, 79, .2));
+    filter: drop-shadow(0 14px 32px rgba(244, 191, 79, .28));
 }
 
 @keyframes sunSpin {
@@ -192,7 +192,7 @@
     font-size: clamp(3.2rem, 10vw, 7rem);
     line-height: 1;
     letter-spacing: 0;
-    background: linear-gradient(135deg, #382b22 18%, var(--sun-deep) 62%, var(--sun) 100%);
+    background: linear-gradient(135deg, #24364b 18%, var(--sky-deep) 58%, var(--sun-deep) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -221,7 +221,7 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(56, 43, 34, .45);
+    color: rgba(36, 54, 75, .46);
     animation: fadeSlideUp 1s 1s ease both;
 }
 

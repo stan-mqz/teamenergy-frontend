@@ -19,7 +19,7 @@ homeBtn.innerHTML = `
             stroke="currentColor"
             stroke-width="1.8"
             stroke-linejoin="round"
-            fill="rgba(184,111,79,0.08)"
+            fill="rgba(79,159,216,0.08)"
         />
     </svg>
 `;

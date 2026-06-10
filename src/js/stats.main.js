@@ -18,7 +18,7 @@ homeBtn.innerHTML = `
             stroke="currentColor"
             stroke-width="1.8"
             stroke-linejoin="round"
-            fill="rgba(184,111,79,0.08)"
+            fill="rgba(79,159,216,0.08)"
         />
     </svg>
 `;
@@ -35,7 +35,7 @@ async function loadStatsPage() {
             align-items: center;
             justify-content: center;
             gap: 1.2rem;
-            color: rgba(56,43,34,.58);
+            color: rgba(36,54,75,.58);
             font-family: 'Nunito', sans-serif;
         ">
             <div style="font-size: 4rem; animation: spin 2s linear infinite;">📊</div>

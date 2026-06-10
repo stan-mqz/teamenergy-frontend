@@ -10,7 +10,7 @@ function showLoader(app) {
     <div style="
       min-height:100vh; display:flex; flex-direction:column;
       align-items:center; justify-content:center; gap:1.2rem;
-      background:#f6efe4; color:rgba(56,43,34,.58);
+      background:#f1f8ff; color:rgba(36,54,75,.58);
       font-family:'Nunito',sans-serif;
     ">
       <div style="font-size:4rem;animation:spin 2s linear infinite;">☀️</div>
@@ -27,7 +27,7 @@ function showError(app) {
     <div style="
       min-height:100vh; display:flex; flex-direction:column;
       align-items:center; justify-content:center; gap:1rem;
-      background:#f6efe4; color:#382b22; font-family:'Nunito',sans-serif;
+      background:#f1f8ff; color:#24364b; font-family:'Nunito',sans-serif;
       text-align:center; padding:2rem;
     ">
       <div style="font-size:4rem;">😟</div>
@@ -37,8 +37,8 @@ function showError(app) {
       </p>
       <button onclick="location.reload()" style="
         margin-top:1rem; padding:12px 28px; border-radius:999px;
-        border:1.5px solid rgba(184,111,79,.35); background:rgba(215,168,77,.16);
-        color:#9f543f; font-size:1rem; font-weight:700; cursor:pointer;
+        border:1.5px solid rgba(79,159,216,.35); background:rgba(125,185,232,.16);
+        color:#3d7faa; font-size:1rem; font-weight:700; cursor:pointer;
         font-family:'Nunito',sans-serif; transition:background .2s;
       ">Reintentar</button>
     </div>

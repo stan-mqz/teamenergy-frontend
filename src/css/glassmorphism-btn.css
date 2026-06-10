@@ -17,14 +17,14 @@
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
-    color: #9f543f;
+    color: #3d7faa;
 
-    background: rgba(255, 250, 242, 0.82);
+    background: rgba(255, 255, 255, 0.84);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1.5px solid rgba(122, 91, 71, 0.18);
+    border: 1.5px solid rgba(79, 159, 216, 0.18);
     box-shadow:
-        0 8px 24px rgba(95, 70, 45, 0.14),
+        0 8px 24px rgba(63, 111, 150, 0.14),
         inset 0 1.5px 0 rgba(255, 255, 255, 0.3);
 
     transition:
@@ -42,17 +42,17 @@
     border-radius: inherit;
     background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.34) 0%,
-            rgba(215, 168, 77, 0.07) 50%,
+            rgba(125, 185, 232, 0.09) 50%,
             transparent 100%);
     pointer-events: none;
 }
 
 .home-btn:hover {
-    background: rgba(255, 246, 234, 0.95);
-    border-color: rgba(184, 111, 79, 0.36);
+    background: rgba(239, 248, 255, 0.96);
+    border-color: rgba(79, 159, 216, 0.36);
     transform: translateY(-2px);
     box-shadow:
-        0 12px 32px rgba(95, 70, 45, 0.18),
+        0 12px 32px rgba(63, 111, 150, 0.18),
         inset 0 1.5px 0 rgba(255, 255, 255, 0.34);
 }
 
@@ -66,5 +66,5 @@
     height: 20px;
     position: relative;
     z-index: 1;
-    filter: drop-shadow(0 1px 2px rgba(95, 70, 45, 0.24));
+    filter: drop-shadow(0 1px 2px rgba(63, 111, 150, 0.24));
 }

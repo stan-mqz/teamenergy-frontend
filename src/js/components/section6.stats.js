@@ -168,7 +168,7 @@ function buildChart(data) {
                     {
                         label: "Correctas",
                         data: data.map(d => d.correct_count),
-                        backgroundColor: "#6f7d4d",
+                        backgroundColor: "#7ccba2",
                         borderRadius: 6,
                         barPercentage: 0.5,
                         categoryPercentage: 0.6,
@@ -176,7 +176,7 @@ function buildChart(data) {
                     {
                         label: "Incorrectas",
                         data: data.map(d => d.incorrect_count),
-                        backgroundColor: "#c9775f",
+                        backgroundColor: "#f28b82",
                         borderRadius: 6,
                         barPercentage: 0.5,
                         categoryPercentage: 0.6,
@@ -198,16 +198,16 @@ function buildChart(data) {
                     x: {
                         grid: { display: false },
                         ticks: {
-                            color: "rgba(56,43,34,.52)",
+                            color: "rgba(36,54,75,.52)",
                             font: { size: 12, family: "'Nunito', sans-serif" },
                             autoSkip: false,
                         },
                     },
                     y: {
                         beginAtZero: true,
-                        grid: { color: "rgba(122,91,71,.12)" },
+                        grid: { color: "rgba(79,159,216,.12)" },
                         ticks: {
-                            color: "rgba(56,43,34,.52)",
+                            color: "rgba(36,54,75,.52)",
                             font: { size: 12, family: "'Nunito', sans-serif" },
                             stepSize: 5,
                             precision: 0,
