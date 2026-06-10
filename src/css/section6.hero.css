@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════
    HERO — "La Luz llega al cosmos"
-   Paleta: fondo noche + explosión solar amarilla
+   Paleta: luz cálida + tonos tierra suaves
 ═══════════════════════════════════════════════ */
 
 .hero {
@@ -13,8 +13,8 @@
     padding: 4rem 2rem 6rem;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(ellipse 80% 60% at 50% 40%,
-            #1a1040 0%, #0a0a1a 70%);
+    background:
+        linear-gradient(180deg, rgba(255, 249, 240, .98) 0%, rgba(246, 239, 228, .94) 72%, rgba(239, 224, 205, .95) 100%);
 }
 
 /* Halo solar de fondo */
@@ -28,18 +28,15 @@
     height: min(700px, 130vw);
     border-radius: 50%;
     background: radial-gradient(circle,
-            rgba(255, 217, 61, .18) 0%,
-            rgba(255, 149, 0, .08) 40%,
+            rgba(215, 168, 77, .24) 0%,
+            rgba(184, 111, 79, .08) 42%,
             transparent 70%);
     pointer-events: none;
 }
 
 /* ── Orbes flotantes decorativos ─────────────── */
 .hero-orb {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    will-change: transform;
+    display: none;
 }
 
 .hero-orb-1 {
@@ -155,8 +152,8 @@
     gap: 6px;
     padding: 6px 18px;
     border-radius: var(--radius-pill);
-    background: rgba(255, 217, 61, .14);
-    border: 1.5px solid rgba(255, 217, 61, .35);
+    background: rgba(215, 168, 77, .14);
+    border: 1.5px solid rgba(184, 111, 79, .24);
     font-size: .78rem;
     font-weight: 700;
     letter-spacing: 1.2px;
@@ -169,7 +166,7 @@
     font-size: clamp(5rem, 14vw, 9rem);
     line-height: 1;
     animation: sunSpin 20s linear infinite, sunBounce 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 40px rgba(255, 217, 61, .6));
+    filter: drop-shadow(0 14px 32px rgba(184, 111, 79, .2));
 }
 
 @keyframes sunSpin {
@@ -192,10 +189,10 @@
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(4rem, 12vw, 8.5rem);
-    line-height: .95;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, #fff 20%, var(--sun) 60%, var(--sun-deep) 100%);
+    font-size: clamp(3.2rem, 10vw, 7rem);
+    line-height: 1;
+    letter-spacing: 0;
+    background: linear-gradient(135deg, #382b22 18%, var(--sun-deep) 62%, var(--sun) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -224,8 +221,44 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .35);
+    color: rgba(56, 43, 34, .45);
     animation: fadeSlideUp 1s 1s ease both;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 92vh;
+        padding: 5.5rem 1.25rem 5rem;
+    }
+
+    .hero-inner {
+        gap: 1rem;
+    }
+
+    .hero-subtitle {
+        max-width: 34rem;
+    }
+}
+
+@media (max-width: 460px) {
+    .hero {
+        min-height: 88vh;
+        padding-inline: 1rem;
+    }
+
+    .hero-badge {
+        font-size: .68rem;
+        padding-inline: 12px;
+        letter-spacing: .8px;
+    }
+
+    .hero-sun {
+        font-size: 4.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.7rem, 18vw, 4.5rem);
+    }
 }
 
 .hero-scroll-hint span {

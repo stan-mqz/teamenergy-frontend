@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════════
-   STATS — Tablero de misión
-   Coherente con el tema Cosmos Crayón
+   STATS — Tablero de aprendizaje
 ═══════════════════════════════════════════════ */
 
 .stats-section {
@@ -19,8 +18,8 @@
     width: min(500px, 100vw);
     height: min(500px, 100vw);
     border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
-    background: #A78BFA;
-    opacity: .07;
+    background: var(--violet);
+    opacity: .05;
     pointer-events: none;
     right: -15%;
     top: -10%;
@@ -39,13 +38,13 @@
     font-weight: 800;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: #A78BFA;
+    color: var(--sun-deep);
 }
 
 .stats-title {
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3rem);
-    color: #fff;
+    color: var(--text-bright);
     line-height: 1.05;
 }
 
@@ -54,7 +53,7 @@
     font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .3);
+    color: rgba(56, 43, 34, .48);
     margin-top: .5rem;
 }
 
@@ -66,8 +65,8 @@
 }
 
 .stats-metric-card {
-    background: rgba(255, 255, 255, .05);
-    border: 1.5px solid rgba(255, 255, 255, .08);
+    background: rgba(255, 250, 242, .84);
+    border: 1.5px solid rgba(122, 91, 71, .13);
     border-radius: var(--radius-card);
     padding: 1.2rem 1rem;
     display: flex;
@@ -80,26 +79,26 @@
     font-weight: 700;
     letter-spacing: .8px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .4);
+    color: rgba(56, 43, 34, .52);
 }
 
 .stats-metric-value {
     font-family: var(--font-display);
     font-size: 2.4rem;
     line-height: 1;
-    color: #fff;
+    color: var(--text-bright);
 }
 
 .stats-metric-value.good {
-    color: #00E5A0;
+    color: var(--mint-deep);
 }
 
 .stats-metric-value.warn {
-    color: #FFD93D;
+    color: var(--sun-deep);
 }
 
 .stats-metric-value.bad {
-    color: #FF6B6B;
+    color: var(--coral-deep);
 }
 
 /* ── Cards por pregunta ──────────────────────── */
@@ -110,9 +109,9 @@
 }
 
 .stats-q-card {
-    background: rgba(255, 255, 255, .04);
-    border: 1.5px solid rgba(255, 255, 255, .09);
-    border-radius: 20px;
+    background: rgba(255, 250, 242, .82);
+    border: 1.5px solid rgba(122, 91, 71, .13);
+    border-radius: 8px;
     padding: 1.2rem 1.4rem;
     display: flex;
     flex-direction: column;
@@ -121,8 +120,8 @@
 }
 
 .stats-q-card:hover {
-    background: rgba(255, 255, 255, .07);
-    border-color: rgba(255, 255, 255, .18);
+    background: rgba(255, 246, 234, .96);
+    border-color: rgba(184, 111, 79, .26);
 }
 
 .stats-q-top {
@@ -135,7 +134,7 @@
     font-size: .72rem;
     font-weight: 800;
     letter-spacing: 1px;
-    color: rgba(255, 255, 255, .3);
+    color: rgba(56, 43, 34, .42);
     white-space: nowrap;
     padding-top: 3px;
     min-width: 22px;
@@ -144,7 +143,7 @@
 .stats-q-text {
     font-size: .98rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, .88);
+    color: rgba(56, 43, 34, .9);
     line-height: 1.55;
     flex: 1;
 }
@@ -159,21 +158,21 @@
 }
 
 .stats-q-badge.good {
-    background: rgba(0, 229, 160, .15);
-    color: #00E5A0;
-    border: 1.5px solid rgba(0, 229, 160, .3);
+    background: rgba(111, 125, 77, .14);
+    color: var(--mint-deep);
+    border: 1.5px solid rgba(111, 125, 77, .28);
 }
 
 .stats-q-badge.warn {
-    background: rgba(255, 217, 61, .15);
-    color: #FFD93D;
-    border: 1.5px solid rgba(255, 217, 61, .3);
+    background: rgba(215, 168, 77, .16);
+    color: #8b6530;
+    border: 1.5px solid rgba(215, 168, 77, .32);
 }
 
 .stats-q-badge.bad {
-    background: rgba(255, 107, 107, .15);
-    color: #FF6B6B;
-    border: 1.5px solid rgba(255, 107, 107, .3);
+    background: rgba(201, 119, 95, .16);
+    color: var(--coral-deep);
+    border: 1.5px solid rgba(201, 119, 95, .3);
 }
 
 /* Barra de progreso */
@@ -186,7 +185,7 @@
 .stats-q-bar-track {
     flex: 1;
     height: 8px;
-    background: rgba(255, 255, 255, .08);
+    background: rgba(122, 91, 71, .1);
     border-radius: var(--radius-pill);
     overflow: hidden;
 }
@@ -198,21 +197,21 @@
 }
 
 .stats-q-bar-fill.good {
-    background: #00E5A0;
+    background: var(--mint);
 }
 
 .stats-q-bar-fill.warn {
-    background: #FFD93D;
+    background: var(--sun);
 }
 
 .stats-q-bar-fill.bad {
-    background: #FF6B6B;
+    background: var(--coral);
 }
 
 .stats-q-total {
     font-size: .75rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, .3);
+    color: rgba(56, 43, 34, .48);
     white-space: nowrap;
 }
 
@@ -229,7 +228,7 @@
     gap: 6px;
     font-size: .8rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, .4);
+    color: rgba(56, 43, 34, .58);
 }
 
 .stats-q-dot {
@@ -240,11 +239,11 @@
 }
 
 .stats-q-dot.good {
-    background: #00E5A0;
+    background: var(--mint);
 }
 
 .stats-q-dot.bad {
-    background: #FF6B6B;
+    background: var(--coral);
 }
 
 /* ── Gráfico ─────────────────────────────────── */
@@ -266,7 +265,7 @@
     gap: 6px;
     font-size: .78rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, .4);
+    color: rgba(56, 43, 34, .58);
 }
 
 .stats-legend-sq {
@@ -277,11 +276,11 @@
 }
 
 .stats-legend-sq.good {
-    background: #00E5A0;
+    background: var(--mint);
 }
 
 .stats-legend-sq.bad {
-    background: #FF6B6B;
+    background: var(--coral);
 }
 
 .stats-canvas-wrap {
@@ -294,9 +293,50 @@
 .stats-error {
     font-size: 1rem;
     font-weight: 700;
-    color: rgba(255, 107, 107, .7);
+    color: var(--coral-deep);
     padding: 1.5rem;
-    border: 1.5px dashed rgba(255, 107, 107, .3);
-    border-radius: 16px;
+    border: 1.5px dashed rgba(159, 84, 63, .3);
+    border-radius: 8px;
     text-align: center;
+}
+
+@media (max-width: 640px) {
+    .stats-section {
+        padding: 5rem 1rem 3rem;
+        gap: 1.5rem;
+    }
+
+    .stats-metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stats-q-top {
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+
+    .stats-q-badge {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+}
+
+@media (max-width: 420px) {
+    .stats-metric-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-q-card {
+        padding: 1rem;
+    }
+
+    .stats-q-bar-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .stats-q-bar-track {
+        width: 100%;
+    }
 }
