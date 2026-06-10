@@ -49,7 +49,6 @@ async function loadStatsPage() {
     const statsEl = await createStats();
     app.innerHTML = "";
     app.appendChild(statsEl);
-    app.appendChild(createLessonNavigation(6));
 }
 
 loadStatsPage();
