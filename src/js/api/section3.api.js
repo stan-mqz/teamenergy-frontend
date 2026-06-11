@@ -12,6 +12,7 @@ export const fetchQuestions = async () => {
     if (!response.ok) throw new Error("Error al obtener preguntas");
     return await response.json();
   } catch (error) {
+    console.log(error)
     console.error("API Error (fetchQuestions):", error);
     throw error;
   }
