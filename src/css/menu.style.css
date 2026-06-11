@@ -160,3 +160,26 @@ header h1 {
         min-height: 112px;
     }
 }
+
+/* ── Tarjeta de estadísticas ─────────────────── */
+.lesson-card.stats-card {
+    text-decoration: none;
+    cursor: pointer;
+    border-color: rgba(185, 167, 232, .32);
+}
+
+.lesson-card.stats-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(118, 101, 168, .45);
+    box-shadow: 0 18px 38px rgba(118, 101, 168, .16);
+    background-color: #f7f5ff;
+}
+
+.lesson-card.stats-card .lesson-number {
+    color: var(--accent-sky);
+}
+
+.lesson-card.stats-card .action-badge {
+    background-color: rgba(185, 167, 232, .18);
+    color: #7665a8;
+}
