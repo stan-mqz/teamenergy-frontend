@@ -15,7 +15,7 @@ function getRating(rate) {
  * Inyecta Chart.js desde CDN si no está cargado aún
  * @returns {Promise<void>}
  */
-function loadChartJs() {
+export function loadChartJs() {
     return new Promise((resolve, reject) => {
         if (window.Chart) { resolve(); return; }
         const script = document.createElement("script");

@@ -5,6 +5,7 @@ import "../css/lesson.navigation.css";
 
 import { createStats } from "./components/section6.stats";
 import { createLessonNavigation } from "./components/lesson.navigation";
+import { createStats3, renderStats } from "./components/section3.stats";
 
 const homeBtn = document.createElement("a");
 homeBtn.classList.add("home-btn");
@@ -25,9 +26,9 @@ homeBtn.innerHTML = `
 document.body.appendChild(homeBtn);
 
 async function loadStatsPage() {
-    const app = document.querySelector("#app");
+  const app = document.querySelector("#app");
 
-    app.innerHTML = `
+  app.innerHTML = `
         <div style="
             min-height: 100vh;
             display: flex;
@@ -46,9 +47,18 @@ async function loadStatsPage() {
         <style>@keyframes spin { to { rotate: 360deg; } }</style>
     `;
 
-    const statsEl = await createStats();
-    app.innerHTML = "";
-    app.appendChild(statsEl);
+  const [stats6, stats3] = await Promise.all([createStats(), createStats3()]);
+
+  app.innerHTML = "";
+  app.appendChild(stats6);
+  app.appendChild(stats3);
+  //   const statsEl = await createStats();
+  //   const statsAppContainer = document.getElementById("stats-app");
+  //   renderStats(statsAppContainer);
+
+  //   app.innerHTML = "";
+  //   app.appendChild(statsEl);
+  //   app.appendChild(statsAppContainer)
 }
 
 loadStatsPage();

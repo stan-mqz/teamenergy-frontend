@@ -1,26 +1,26 @@
-    // src/js/components/section3.stats.js
-    import { fetchStats } from '../api/section3.api.js';
+// src/js/components/section3.stats.js
+import { fetchStats } from "../api/section3.api.js";
 
-    export const renderStats = async (container) => {
-        container.innerHTML = `
+export const renderStats = async (container) => {
+  container.innerHTML = `
             <p style="font-family:'Nunito',sans-serif; text-align:center; opacity:0.5; margin-top:2rem;">
                 Cargando estadísticas colectivas de la clase...
             </p>
         `;
 
-        try {
-            const statsData = await fetchStats();
+  try {
+    const statsData = await fetchStats();
 
-            if (!statsData || statsData.length === 0) {
-                container.innerHTML = `
+    if (!statsData || statsData.length === 0) {
+      container.innerHTML = `
                     <p style="font-family:'Nunito',sans-serif; text-align:center; opacity:0.5; margin-top:2rem;">
                         No hay datos estadísticos acumulados todavía.
                     </p>
                 `;
-                return;
-            }
+      return;
+    }
 
-            container.innerHTML = `
+    container.innerHTML = `
                 <section style="
                     width: 100%;
                     border-radius: 36px;
@@ -57,9 +57,15 @@
 
                     <!-- Stats grid -->
                     <div style="display:grid; gap:1rem;">
-                        ${statsData.map(stat => {
-                            const total = (stat.correctCount ?? 0) + (stat.incorrectCount ?? 0);
-                            const percentage = total > 0 ? ((stat.correctCount / total) * 100).toFixed(1) : 0;
+                        ${statsData
+                          .map((stat) => {
+                            const total =
+                              (stat.correctCount ?? 0) +
+                              (stat.incorrectCount ?? 0);
+                            const percentage =
+                              total > 0
+                                ? ((stat.correctCount / total) * 100).toFixed(1)
+                                : 0;
                             const isGood = percentage >= 60;
 
                             return `
@@ -67,8 +73,8 @@
                                     background: rgba(0,0,0,0.2);
                                     padding: 1.4rem;
                                     border-radius: 18px;
-                                    border: 1.5px solid ${isGood ? 'rgba(97,255,202,0.15)' : 'rgba(255,122,0,0.15)'};
-                                    border-left: 4px solid ${isGood ? '#61ffca' : '#ff7a00'};
+                                    border: 1.5px solid ${isGood ? "rgba(97,255,202,0.15)" : "rgba(255,122,0,0.15)"};
+                                    border-left: 4px solid ${isGood ? "#61ffca" : "#ff7a00"};
                                 ">
                                     <!-- Question ID + percentage -->
                                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
@@ -87,7 +93,7 @@
                                         <span style="
                                             font-family:'Fredoka One',cursive;
                                             font-size:1.3rem;
-                                            color:${isGood ? '#61ffca' : '#ff9a3c'};
+                                            color:${isGood ? "#61ffca" : "#ff9a3c"};
                                         ">${percentage}%</span>
                                     </div>
 
@@ -110,17 +116,167 @@
                                     </div>
                                 </div>
                             `;
-                        }).join('')}
+                          })
+                          .join("")}
                     </div>
                 </section>
             `;
-
-        } catch (error) {
-            console.error('[renderStats] Error:', error);
-            container.innerHTML = `
+  } catch (error) {
+    console.error("[renderStats] Error:", error);
+    container.innerHTML = `
                 <p style="font-family:'Nunito',sans-serif; text-align:center; color:#f87171; margin-top:2rem;">
                     Error al cargar las estadísticas.
                 </p>
             `;
-        }
-    };
+  }
+};
+
+
+function getRating(rate) {
+    if (rate >= 60) return "good";
+    if (rate >= 40) return "warn";
+    return "bad";
+}
+
+function buildMetrics(data) {
+    const totalCorrect   = data.reduce((s, d) => s + d.correct_count, 0);
+    const totalIncorrect = data.reduce((s, d) => s + d.incorrect_count, 0);
+    const totalAttempts  = totalCorrect + totalIncorrect;
+    const globalRate     = totalAttempts ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
+    const rating         = getRating(globalRate);
+
+    const grid = document.createElement("div");
+    grid.classList.add("stats-metric-grid");
+
+    grid.innerHTML = `
+        <div class="stats-metric-card">
+            <p class="stats-metric-label">Total respuestas</p>
+            <p class="stats-metric-value">${totalAttempts}</p>
+        </div>
+        <div class="stats-metric-card">
+            <p class="stats-metric-label">Correctas</p>
+            <p class="stats-metric-value good">${totalCorrect}</p>
+        </div>
+        <div class="stats-metric-card">
+            <p class="stats-metric-label">Incorrectas</p>
+            <p class="stats-metric-value bad">${totalIncorrect}</p>
+        </div>
+        <div class="stats-metric-card">
+            <p class="stats-metric-label">Tasa global</p>
+            <p class="stats-metric-value ${rating}">${globalRate}%</p>
+        </div>
+    `;
+
+    return grid;
+}
+
+function buildQuestionCards(data) {
+    const list = document.createElement("div");
+    list.classList.add("stats-q-list");
+
+    data.forEach((d, i) => {
+        const rate   = parseFloat(d.success_rate);
+        const rating = getRating(rate);
+        const total  = d.correct_count + d.incorrect_count;
+
+        const card = document.createElement("div");
+        card.classList.add("stats-q-card");
+
+        card.innerHTML = `
+            <div class="stats-q-top">
+                <span class="stats-q-num">P${i + 1}</span>
+                <p class="stats-q-text">${d.question}</p>
+                <span class="stats-q-badge ${rating}">${rate.toFixed(1)}%</span>
+            </div>
+            <div class="stats-q-bar-row">
+                <div class="stats-q-bar-track">
+                    <div
+                        class="stats-q-bar-fill ${rating}"
+                        data-width="${rate}"
+                        style="width: 0%"
+                    ></div>
+                </div>
+                <span class="stats-q-total">${total} resp.</span>
+            </div>
+            <div class="stats-q-counts">
+                <span class="stats-q-count">
+                    <span class="stats-q-dot good"></span>
+                    ${d.correct_count} correctas
+                </span>
+                <span class="stats-q-count">
+                    <span class="stats-q-dot bad"></span>
+                    ${d.incorrect_count} incorrectas
+                </span>
+            </div>
+        `;
+
+        list.appendChild(card);
+    });
+
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            list.querySelectorAll(".stats-q-bar-fill").forEach((bar, idx) => {
+                setTimeout(() => {
+                    bar.style.width = bar.dataset.width + "%";
+                }, idx * 150);
+            });
+        }, 400);
+    });
+
+    return list;
+}
+
+/**
+ * Normaliza la respuesta de fetchStats al shape que usan los builders
+ */
+function normalize(raw) {
+    return raw.map(item => ({
+        questionId:      item.questionId,
+        question:        item.question,
+        correct_count:   item.correctCount   ?? 0,
+        incorrect_count: item.incorrectCount ?? 0,
+        success_rate:    item.success_rate   ?? "0.00",
+        number:          item.number,
+    }));
+}
+
+/**
+ * Equivalente a createStats pero para la sección 3.
+ * Devuelve un <section> listo para appendear.
+ */
+export async function createStats3() {
+    const section = document.createElement("section");
+    section.classList.add("stats-section");
+
+    section.innerHTML = `
+        <div class="stats-header">
+            <span class="stats-eyebrow">Sección 3 · El Calor</span>
+            <h2 class="stats-title">Estadísticas del quiz</h2>
+        </div>
+    `;
+
+    try {
+        const raw = await fetchStats();
+        const data = normalize(Array.isArray(raw) ? raw : raw?.data ?? []);
+
+        if (data.length === 0) throw new Error("Sin datos");
+
+        section.appendChild(buildMetrics(data));
+
+        const qLabel = document.createElement("p");
+        qLabel.classList.add("stats-section-label");
+        qLabel.textContent = "Rendimiento por pregunta";
+        section.appendChild(qLabel);
+
+        section.appendChild(buildQuestionCards(data));
+
+    } catch (err) {
+        console.error("[createStats3] Error:", err);
+        const errEl = document.createElement("p");
+        errEl.classList.add("stats-error");
+        errEl.textContent = "No se pudieron cargar las estadísticas.";
+        section.appendChild(errEl);
+    }
+
+    return section;
+}
