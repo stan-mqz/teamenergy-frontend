@@ -1,11 +1,11 @@
 import { createQuiz } from "../components/section2.quiz.js";
 
 export async function loadElectricPage() {
+  const app = document.querySelector("#app");
 
-    const app =
-        document.querySelector("#app");
 
-    app.innerHTML = `
+
+  app.innerHTML = `
 
         <section class="hero">
 
@@ -85,8 +85,7 @@ export async function loadElectricPage() {
 
     `;
 
-    const quiz =
-        await createQuiz();
+  const quiz = await createQuiz();
 
-    app.appendChild(quiz);
+  app.appendChild(quiz);
 }

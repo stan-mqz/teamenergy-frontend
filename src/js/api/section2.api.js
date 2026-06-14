@@ -6,6 +6,7 @@ export async function getQuestions() {
         `${API_URL}/api/section2/questions`
     );
 
+
     return await response.json();
 }
 

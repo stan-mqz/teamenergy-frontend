@@ -7,7 +7,6 @@ import "../../css/lesson.navigation.css";
 
 export const initSection3Page = async () => {
   const container = document.querySelector(".theme3-container");
-  console.log(container);
   const quizAppContainer = document.getElementById("quiz-app");
   const statsAppContainer = document.getElementById("stats-app");
 

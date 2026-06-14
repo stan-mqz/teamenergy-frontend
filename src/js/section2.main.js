@@ -1,7 +1,7 @@
-import {
-    getQuestions,
-    submitResults
-} from "./api/section2.api.js";
+import { getQuestions, submitResults } from "./api/section2.api.js";
+import "../css/lesson.navigation.css";
+
+import { createLessonNavigation } from "../js/components/lesson.navigation.js";
 
 const app = document.getElementById("app");
 
@@ -9,35 +9,40 @@ let answers = [];
 let correctCount = 0;
 
 const correctAnswersMap = {
-    201: 1,
-    202: 2,
-    203: 1,
-    204: 0,
-    205: 0
+  201: 1,
+  202: 2,
+  203: 1,
+  204: 0,
+  205: 0,
 };
 
-
-
 function foquitoHabla(texto) {
-    const box = document.getElementById("foquito-text");
-    if (box) {
-        box.textContent = texto;
-    }
+  const box = document.getElementById("foquito-text");
+  if (box) {
+    box.textContent = texto;
+  }
 }
 
 async function init() {
+  const data = await getQuestions();
 
-    const data = await getQuestions();
-
-    renderGame(data);
+  renderGame(data);
 }
 
-
-
 function renderGame(data) {
+  app.innerHTML = `
 
-    app.innerHTML = `
-
+  <a class="home-btn" href="/index.html" title="Volver al menú" aria-label="Volver al menú principal">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
+            <path
+                d="M3 10.5L12 3L21 10.5V20C21 20.55 20.55 21 20 21H15V15H9V21H4C3.45 21 3 20.55 3 20V10.5Z"
+                stroke="rgba(255,255,255,0.9)"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+                fill="rgba(255,255,255,0.08)"
+            />
+        </svg>
+    </a>
         <div id="battery-fixed">
 
             Energía de la ciudad
@@ -207,18 +212,15 @@ function renderGame(data) {
         <div id="result"></div>
     `;
 
-    document
-        .getElementById("startBtn")
-        .addEventListener(
-            "click",
-            () => startQuiz(data.questions)
-        );
+  document
+    .getElementById("startBtn")
+    .addEventListener("click", () => startQuiz(data.questions));
 
-    initInteractions();
+  initInteractions();
 
-    foquitoHabla("¡Hola! Soy Foquito ⚡ Vamos a encender la ciudad 💡");
+  foquitoHabla("¡Hola! Soy Foquito ⚡ Vamos a encender la ciudad 💡");
 
-
+  app.appendChild(createLessonNavigation(2));
 }
 
 /* =========================
@@ -226,52 +228,46 @@ function renderGame(data) {
 ========================= */
 
 function initInteractions() {
+  const clickSound = new Audio("/sounds/click.mp3");
 
-    const clickSound = new Audio("/sounds/click.mp3");
+  document.querySelectorAll("[data-sound]").forEach((el) => {
+    el.addEventListener("click", () => {
+      // 🔊 sonido
+      clickSound.currentTime = 0;
+      clickSound.play();
 
+      // 💡 explicación (si tiene)
+      if (el.dataset.info) {
+        foquitoHabla(el.dataset.info);
+      }
 
-    document.querySelectorAll("[data-sound]")
-        .forEach(el => {
-            el.addEventListener("click", () => {
+      // ✨ animación
+      el.style.transform = "scale(1.2)";
 
-                // 🔊 sonido
-                clickSound.currentTime = 0;
-                clickSound.play();
+      setTimeout(() => {
+        el.style.transform = "scale(1)";
+      }, 200);
+    });
+  });
 
-                // 💡 explicación (si tiene)
-                if (el.dataset.info) {
-                    foquitoHabla(el.dataset.info);
-                }
+  const bulb = document.getElementById("bulb");
+  const btn = document.getElementById("lightBtn");
 
-                // ✨ animación
-                el.style.transform = "scale(1.2)";
+  if (btn) {
+    let bulbOn = false;
 
-                setTimeout(() => {
-                    el.style.transform = "scale(1)";
-                }, 200);
-            });
-        });
+    btn.addEventListener("click", () => {
+      bulbOn = !bulbOn;
 
-    const bulb = document.getElementById("bulb");
-    const btn = document.getElementById("lightBtn");
-
-    if (btn) {
-
-        let bulbOn = false;
-
-        btn.addEventListener("click", () => {
-
-            bulbOn = !bulbOn;
-
-            if (bulbOn) {
-                bulb.src = "/img/bulb-on.png";
-                btn.textContent = "Apagar";
-            } else {
-                bulb.src = "/img/bulb-off.png";
-                btn.textContent = "Encender";
-            }
-        });
-    }
+      if (bulbOn) {
+        bulb.src = "/img/bulb-on.png";
+        btn.textContent = "Apagar";
+      } else {
+        bulb.src = "/img/bulb-off.png";
+        btn.textContent = "Encender";
+      }
+    });
+  }
 }
 
 /* =========================
@@ -279,23 +275,21 @@ function initInteractions() {
 ========================= */
 
 function startQuiz(questions) {
+  answers = [];
 
-    answers = [];
+  document.querySelector(".start-section").style.display = "none";
 
-    document.querySelector(".start-section").style.display = "none";
+  foquitoHabla("Ahora responde las preguntas 😄");
 
-    foquitoHabla("Ahora responde las preguntas 😄");
-
-    showQuestion(questions, 0);
+  showQuestion(questions, 0);
 }
 
 function showQuestion(questions, index) {
+  foquitoHabla("Lee bien la pregunta 🤔");
 
-    foquitoHabla("Lee bien la pregunta 🤔");
+  const q = questions[index];
 
-    const q = questions[index];
-
-    document.getElementById("quizArea").innerHTML = `
+  document.getElementById("quizArea").innerHTML = `
 
         <div class="question-card">
 
@@ -309,86 +303,77 @@ function showQuestion(questions, index) {
 
             <div class="options">
 
-                ${q.options.map(
-        (option, i) => `
+                ${q.options
+                  .map(
+                    (option, i) => `
                         <button
                             class="option-btn"
                             data-value="${i}">
                             ${option}
                         </button>
-                    `
-    ).join("")}
+                    `,
+                  )
+                  .join("")}
 
             </div>
 
         </div>
     `;
 
-    document
-        .querySelectorAll(".option-btn")
-        .forEach(btn => {
+  document.querySelectorAll(".option-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const selectSound = new Audio("/sounds/click.mp3");
+      selectSound.currentTime = 0;
+      selectSound.play();
 
-            btn.addEventListener("click", () => {
+      const selected = Number(btn.dataset.value);
+      const correct = correctAnswersMap[q.id];
 
-            const selectSound = new Audio("/sounds/click.mp3");
-            selectSound.currentTime = 0;
-            selectSound.play();
+      // guardar respuesta
+      answers.push({
+        questionId: q.id,
+        selectedIndex: selected,
+      });
 
+      if (selected === correct) {
+        foquitoHabla("¡Muy bien! ⚡");
 
-                const selected = Number(btn.dataset.value);
-                const correct = correctAnswersMap[q.id];
+        // 🟢 marcar correcta
+        btn.style.background = "#66BB6A";
 
-                // guardar respuesta
-                answers.push({
-                    questionId: q.id,
-                    selectedIndex: selected
-                });
+        updateBattery(index + 1);
 
-                if (selected === correct) {
+        setTimeout(() => {
+          if (index + 1 < questions.length) {
+            showQuestion(questions, index + 1);
+          } else {
+            finishQuiz();
+          }
+        }, 500);
+      } else {
+        foquitoHabla("Oops 😅 esa no era");
 
-                    foquitoHabla("¡Muy bien! ⚡");
+        // 🔴 marcar incorrecta
+        btn.style.background = "#EF5350";
 
-                    // 🟢 marcar correcta
-                    btn.style.background = "#66BB6A";
-
-                    updateBattery(index + 1);
-
-                    setTimeout(() => {
-                        if (index + 1 < questions.length) {
-                            showQuestion(questions, index + 1);
-                        } else {
-                            finishQuiz();
-                        }
-                    }, 500);
-
-                } else {
-
-                    foquitoHabla("Oops 😅 esa no era");
-
-                    // 🔴 marcar incorrecta
-                    btn.style.background = "#EF5350";
-
-                    // 🟢 mostrar correcta
-                    document.querySelectorAll(".option-btn").forEach((b, i) => {
-                        if (i === correct) {
-                            b.style.background = "#66BB6A";
-                        }
-                    });
-
-                    // ⏭ avanzar después de un momento
-                    setTimeout(() => {
-                        if (index + 1 < questions.length) {
-                            showQuestion(questions, index + 1);
-                        } else {
-                            finishQuiz();
-                        }
-                    }, 800);
-                }
-            });
-
-
-
+        // 🟢 mostrar correcta
+        document.querySelectorAll(".option-btn").forEach((b, i) => {
+          if (i === correct) {
+            b.style.background = "#66BB6A";
+          }
         });
+
+        // ⏭ avanzar después de un momento
+        setTimeout(() => {
+          if (index + 1 < questions.length) {
+            showQuestion(questions, index + 1);
+          } else {
+            finishQuiz();
+          }
+        }, 800);
+      }
+    });
+  });
 }
 
 /* =========================
@@ -396,47 +381,33 @@ function showQuestion(questions, index) {
 ========================= */
 
 function updateBattery(level) {
+  const battery = document.getElementById("battery-bar");
 
-    const battery = document.getElementById("battery-bar");
+  const states = ["█░░░░░", "██░░░░", "███░░░", "████░░", "█████░", "██████"];
 
-    const states = [
-        "█░░░░░",
-        "██░░░░",
-        "███░░░",
-        "████░░",
-        "█████░",
-        "██████"
-    ];
+  battery.textContent = states[level];
 
-    battery.textContent = states[level];
+  // 🔥 ciudad cambia
 
-    // 🔥 ciudad cambia
+  const cityImg = document.querySelector(".city-img");
 
-    const cityImg = document.querySelector(".city-img");
+  // brillo progresivo
+  const brightnessLevels = [0.3, 0.5, 0.7, 0.9, 1.1, 1.3];
 
-    // brillo progresivo
-    const brightnessLevels = [0.3, 0.5, 0.7, 0.9, 1.1, 1.3];
-
-    cityImg.style.filter = `
+  cityImg.style.filter = `
     brightness(${brightnessLevels[level]})
     drop-shadow(0 0 ${level * 5}px rgba(255,235,59,0.6))
 `;
 
-    // 💥 CAMBIO FINAL DE IMAGEN
+  // 💥 CAMBIO FINAL DE IMAGEN
 
+  if (level === 5) {
+    cityImg.style.transform = "scale(1.1)";
 
-    if (level === 5) {
-
-        cityImg.style.transform = "scale(1.1)";
-
-        setTimeout(() => {
-            cityImg.src = "img/city-final.png";
-        }, 200);
-    }
-
-
-
-
+    setTimeout(() => {
+      cityImg.src = "img/city-final.png";
+    }, 200);
+  }
 }
 
 /* =========================
@@ -444,16 +415,14 @@ function updateBattery(level) {
 ========================= */
 
 async function finishQuiz() {
+  const student_name =
+    document.getElementById("studentName").value || "Estudiante";
 
-    const student_name =
-        document.getElementById("studentName").value || "Estudiante";
+  const result = await submitResults(student_name, answers);
 
-    const result =
-        await submitResults(student_name, answers);
+  document.getElementById("quizArea").innerHTML = "";
 
-    document.getElementById("quizArea").innerHTML = "";
-
-    document.getElementById("result").innerHTML = `
+  document.getElementById("result").innerHTML = `
 
         <div class="result-card">
 
@@ -472,20 +441,15 @@ async function finishQuiz() {
         </div>
     `;
 
-    const correct = result.correct_answers ?? 0;
+  const correct = result.correct_answers ?? 0;
 
-    if (correct === 5) {
-        foquitoHabla("¡Increíble! ⚡ Encendiste toda la ciudad ");
-    } else if (correct >= 3) {
-        foquitoHabla("¡Vas muy bien!  La ciudad está parcialmente encendida 💡");
-    } else {
-        foquitoHabla("Hmm 😅 la ciudad sigue oscura... intenta de nuevo 💡");
-    }
-
-
-
+  if (correct === 5) {
+    foquitoHabla("¡Increíble! ⚡ Encendiste toda la ciudad ");
+  } else if (correct >= 3) {
+    foquitoHabla("¡Vas muy bien!  La ciudad está parcialmente encendida 💡");
+  } else {
+    foquitoHabla("Hmm 😅 la ciudad sigue oscura... intenta de nuevo 💡");
+  }
 }
-
-
 
 init();
