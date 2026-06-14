@@ -3,6 +3,7 @@ import { createHero } from '../components/section4.hero';
 import { createSection } from '../components/section4.section';
 import { createQuiz } from "../components/section4.quiz";
 import { createStats } from "../components/section4.stats";
+import { createLessonNavigation } from "../components/lesson.navigation";
 
 
 function showLoader(app) {
@@ -65,6 +66,7 @@ export async function loadWaterPage() {
     });
     const quiz = await createQuiz();
     app.appendChild(quiz);
+    app.appendChild(createLessonNavigation(4));
 
 
   } catch (err) {

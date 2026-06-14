@@ -3,6 +3,7 @@ import "../css/section4.hero.css";
 import "../css/section4.sections.css";
 import "../css/section4.quiz.css";
 import "../css/glassmorphism-btn.css";
+import "../css/lesson.navigation.css";
 
 import { loadWaterPage } from "./pages/section4.page";
 
