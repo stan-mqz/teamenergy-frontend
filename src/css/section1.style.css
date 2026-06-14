@@ -1,0 +1,187 @@
+/* ==========================================================================
+   Contenedor Principal de la Sección 1
+   ========================================================================== */
+.section1-container {
+  display: flex;
+  width: 100%;
+  max-width: 1024px;
+  min-height: 580px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  margin: 20px auto;
+}
+
+/* ==========================================================================
+   Columna Izquierda (Panel de Introducción / Mecánica)
+   ========================================================================== */
+.section1-intro-panel {
+  flex: 1;
+  /* 🎨 Fondo corregido: Azul cielo arriba (60%) y blanco/celeste plano abajo donde pisa el señor */
+  background: linear-gradient(180deg, #92cbff 60%, #e3f2fd 60%);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Distribuye título arriba, ilustración al medio, botón abajo */
+  text-align: center;
+  position: relative;
+  
+  /* 📐 Bordes redondeados del lado izquierdo para que se unan estéticamente al panel del juego */
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  overflow: hidden; /* Esto evita que la imagen o el fondo se salgan de las esquinas redondeadas */
+}
+
+.section1-intro-panel .main-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 5px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section1-intro-panel .subtitle {
+  font-size: 1.4rem;
+  color: #fff176; /* Amarillo brillante para el subtítulo */
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Contenedor para tus gráficos o imágenes (Científico + Péndulo) */
+.section1-graphics {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 250px;
+}
+
+/* El botón azul "Comenzar" */
+.btn-section1-start {
+  background-color: #4466f2;
+  color: #ffffff;
+  border: none;
+  padding: 14px 50px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(68, 102, 242, 0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-section1-start:hover {
+  background-color: #3152db;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Columna Derecha (Panel del Quiz / Preguntas)
+   ========================================================================== */
+.section1-quiz-panel {
+  flex: 1;
+  background-color: #262a41; /* Azul oscuro idéntico a la captura */
+  color: #ffffff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Encabezado de Progreso */
+.section1-progress-box {
+  margin-bottom: 30px;
+}
+
+.section1-progress-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.95rem;
+  color: #a0a5c1;
+  margin-bottom: 12px;
+}
+
+.section1-progress-info .meta-text {
+  font-size: 0.85rem;
+  color: #81c784; /* Verde del texto secundario */
+}
+
+.section1-bar-bg {
+  width: 100%;
+  height: 8px;
+  background-color: #3d4363;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.section1-bar-fill {
+  width: 50%; /* Controla el progreso desde tu JS aquí */
+  height: 100%;
+  background-color: #7bc786;
+  border-radius: 10px;
+}
+
+/* Texto de la Pregunta Principal */
+.section1-question-text {
+  font-size: 1.65rem;
+  font-weight: 600;
+  margin: 0 0 25px 0;
+  line-height: 1.3;
+}
+
+/* Contenedor y Tarjetas de Opciones */
+.section1-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.section1-option-item {
+  background-color: #1c1f33; /* Fondo más oscuro para los bloques de opciones */
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 18px 20px;
+  font-size: 1.05rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.section1-option-item:hover {
+  background-color: #2a2f4c;
+}
+
+/* Estado cuando una opción es seleccionada activamente (vía JS o CSS clases) */
+.section1-option-item.selected {
+  border-color: #4db6ac;
+  background-color: #192735;
+}
+
+/* Botón "Validar respuestas" */
+.btn-section1-validate {
+  background-color: #4db6ac; /* Verde menta/agua */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  align-self: flex-end; /* Lo empuja a la esquina inferior derecha */
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(77, 182, 172, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.btn-section1-validate:hover {
+  background-color: #3b9c92;
+}
