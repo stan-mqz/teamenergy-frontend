@@ -7,6 +7,7 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, "index.html"),
                 section6: resolve(__dirname, "section6.html"),
+                section3: resolve(__dirname, "section3.html"),
                 section5: resolve(__dirname, 'section5.html'),
                 stats: resolve(__dirname, "stats.html"),
             },
