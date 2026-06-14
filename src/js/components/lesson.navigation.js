@@ -49,7 +49,7 @@ export function createLessonNavigation(currentLesson) {
 
     if (previous) {
         nav.appendChild(createButton("previous", previous));
-    }
+    }   
 
     if (next) {
         nav.appendChild(createButton("next", next));
