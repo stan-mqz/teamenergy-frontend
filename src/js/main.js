@@ -20,6 +20,6 @@ lesson2Btn.addEventListener("click", () => {
 
 const lesson5Btn = document.getElementById("lesson-5-btn");
 
-lesson2Btn.addEventListener("click", () => {
+lesson5Btn.addEventListener("click", () => {
     window.location.href = "/section5.html";
 });
