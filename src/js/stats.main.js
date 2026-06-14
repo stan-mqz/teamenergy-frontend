@@ -50,13 +50,13 @@ async function loadStatsPage() {
         <style>@keyframes spin { to { rotate: 360deg; } }</style>
     `;
 
-  const [stats6, stats3, stats5, stats4] = await Promise.all([createStats(), createStats3(), createStats5(), createStats4()]);
+  const [stats3, stats4, stats5, stats6] = await Promise.all([createStats3(), createStats4(), createStats5(), createStats()]);
 
   app.innerHTML = "";
-  app.appendChild(stats6);
   app.appendChild(stats3);
-  app.appendChild(stats5);
   app.appendChild(stats4);
+  app.appendChild(stats5);
+  app.appendChild(stats6);
   //   const statsEl = await createStats();
   //   const statsAppContainer = document.getElementById("stats-app");
   //   renderStats(statsAppContainer);
