@@ -1,8 +1,8 @@
-import { getSections } from '../api/section6.api';
-import { createHero } from '../components/section6.hero';
-import { createSection } from '../components/section6.section';
-import { createQuiz } from "../components/section6.quiz";
-import { createStats } from "../components/section6.stats";
+import { getSections } from '../api/section4.api';
+import { createHero } from '../components/section4.hero';
+import { createSection } from '../components/section4.section';
+import { createQuiz } from "../components/section4.quiz";
+import { createStats } from "../components/section4.stats";
 
 
 function showLoader(app) {
@@ -13,9 +13,9 @@ function showLoader(app) {
       background:#06061a; color:rgba(255,255,255,.5);
       font-family:'Nunito',sans-serif;
     ">
-      <div style="font-size:4rem;animation:spin 2s linear infinite;">☀️</div>
+      <div style="font-size:4rem;animation:spin 2s linear infinite;">💧</div>
       <p style="font-size:.9rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;">
-        Cargando la luz...
+        Cargando el agua...
       </p>
     </div>
     <style>@keyframes spin{to{rotate:360deg}}</style>
@@ -45,7 +45,7 @@ function showError(app) {
   `;
 }
 
-export async function loadLightPage() {
+export async function loadWaterPage() {
   const app = document.querySelector('#app');
   showLoader(app);
 

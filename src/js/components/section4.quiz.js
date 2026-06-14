@@ -1,4 +1,4 @@
-import { getQuestions, validateAnswers } from "../api/section6.api";
+import { getQuestions, validateAnswers } from "../api/section4.api";
 
 export async function createQuiz() {
     const section = document.createElement("section");

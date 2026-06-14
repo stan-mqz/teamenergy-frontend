@@ -58,13 +58,13 @@ const CONFIGS = {
         factIcon: '🌈',
         buildVisual(card) {
             const bands = [
-                { color: '#F28B82', delay: .1 },
-                { color: '#F4BF4F', delay: .2 },
-                { color: '#A8D672', delay: .3 },
-                { color: '#7CCBA2', delay: .4 },
-                { color: '#7DB9E8', delay: .5 },
-                { color: '#B9A7E8', delay: .6 },
-                { color: '#F4A6B7', delay: .7 },
+                { color: '#EF4444', delay: .1 },
+                { color: '#F97316', delay: .2 },
+                { color: '#06B6D4', delay: .3 },
+                { color: '#3B82F6', delay: .4 },
+                { color: '#6366F1', delay: .5 },
+                { color: '#8B5CF6', delay: .6 },
+                { color: '#EC4899', delay: .7 },
             ];
             card.innerHTML = `
         <div class="anim-rainbow-wrap">

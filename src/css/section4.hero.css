@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════
-   HERO — "La Luz llega al cosmos"
-   Paleta: fondo noche + explosión solar amarilla
+   HERO — "El Agua fluye a través del planeta"
+   Paleta: fondo noche + explosión azul water
 ═══════════════════════════════════════════════ */
 
 .hero {
@@ -14,10 +14,10 @@
     position: relative;
     overflow: hidden;
     background: radial-gradient(ellipse 80% 60% at 50% 40%,
-            #1a1040 0%, #0a0a1a 70%);
+            #1a2a40 0%, #0a0a1a 70%);
 }
 
-/* Halo solar de fondo */
+/* Halo water de fondo */
 .hero::after {
     content: '';
     position: absolute;
@@ -28,8 +28,8 @@
     height: min(700px, 130vw);
     border-radius: 50%;
     background: radial-gradient(circle,
-            rgba(255, 217, 61, .18) 0%,
-            rgba(255, 149, 0, .08) 40%,
+            rgba(56, 189, 248, .18) 0%,
+            rgba(2, 132, 199, .08) 40%,
             transparent 70%);
     pointer-events: none;
 }
@@ -108,11 +108,11 @@
     }
 }
 
-/* ── Partículas de luz ───────────────────────── */
+/* ── Partículas de agua ───────────────────────── */
 .hero-particle {
     position: absolute;
     border-radius: 50%;
-    background: var(--sun);
+    background: #38BDF8;
     pointer-events: none;
     animation: particleRise linear infinite;
     opacity: 0;
@@ -155,30 +155,24 @@
     gap: 6px;
     padding: 6px 18px;
     border-radius: var(--radius-pill);
-    background: rgba(255, 217, 61, .14);
-    border: 1.5px solid rgba(255, 217, 61, .35);
+    background: rgba(56, 189, 248, .14);
+    border: 1.5px solid rgba(56, 189, 248, .35);
     font-size: .78rem;
     font-weight: 700;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    color: var(--sun);
+    color: #38BDF8;
     animation: fadeSlideDown .8s ease both;
 }
 
 .hero-sun {
     font-size: clamp(5rem, 14vw, 9rem);
     line-height: 1;
-    animation: sunSpin 20s linear infinite, sunBounce 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 40px rgba(255, 217, 61, .6));
+    animation: waterFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 40px rgba(56, 189, 248, .6));
 }
 
-@keyframes sunSpin {
-    to {
-        rotate: 360deg;
-    }
-}
-
-@keyframes sunBounce {
+@keyframes waterFloat {
 
     0%,
     100% {
@@ -195,7 +189,7 @@
     font-size: clamp(4rem, 12vw, 8.5rem);
     line-height: .95;
     letter-spacing: -1px;
-    background: linear-gradient(135deg, #fff 20%, var(--sun) 60%, var(--sun-deep) 100%);
+    background: linear-gradient(135deg, #fff 20%, #38BDF8 60%, #0284C7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

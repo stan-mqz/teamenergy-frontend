@@ -1,5 +1,5 @@
 /**
- * Genera partículas de luz flotantes
+ * Genera partículas de agua flotantes
  * @param {HTMLElement} container
  */
 function spawnParticles(container) {
@@ -20,7 +20,7 @@ function spawnParticles(container) {
 }
 
 /**
- * Crea el hero principal de La Luz
+ * Crea el hero principal del Agua
  * @param {Object} section
  * @returns {HTMLElement}
  */
@@ -43,7 +43,7 @@ export function createHero(section) {
     inner.classList.add('hero-inner');
     inner.innerHTML = `
     <span class="hero-badge">✦ Ciencias · 2do Grado ✦</span>
-    <div class="hero-sun" role="img" aria-label="Sol">☀️</div>
+    <div class="hero-sun" role="img" aria-label="Agua">💧</div>
     <h1 class="hero-title">${section.title}</h1>
     <p class="hero-subtitle">${section.description}</p>
   `;

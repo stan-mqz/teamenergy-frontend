@@ -1,10 +1,10 @@
-import "../css/section6.style.css";
-import "../css/section6.hero.css";
-import "../css/section6.sections.css";
-import "../css/section6.quiz.css";
+import "../css/section4.style.css";
+import "../css/section4.hero.css";
+import "../css/section4.sections.css";
+import "../css/section4.quiz.css";
 import "../css/glassmorphism-btn.css";
 
-import { loadLightPage } from "./pages/section6.page";
+import { loadWaterPage } from "./pages/section4.page";
 
 const homeBtn = document.createElement("a");
 homeBtn.classList.add("home-btn");
@@ -24,4 +24,4 @@ homeBtn.innerHTML = `
 `;
 document.body.appendChild(homeBtn);
 
-loadLightPage();
+loadWaterPage();

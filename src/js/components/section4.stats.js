@@ -1,4 +1,4 @@
-import { getStats } from "../api/section6.api";
+import { getStats } from "../api/section4.api";
 
 /**
  * Determina clase de color según tasa de aciertos
@@ -233,8 +233,8 @@ export async function createStats() {
 
     section.innerHTML = `
         <div class="stats-header">
-            <span class="stats-eyebrow">Sección 6 · La Luz</span>
-            <h2 class="stats-title">Estadísticas del quiz</h2>
+            <span class="stats-eyebrow">Sección 4 · El Agua</span>
+            <h2 class="stats-title">🌊 Estadísticas del quiz</h2>
         </div>
     `;
 
@@ -248,27 +248,18 @@ export async function createStats() {
         const data = response.data;
 
         section.appendChild(buildMetrics(data));
-
-        const qLabel = document.createElement("p");
-        qLabel.classList.add("stats-section-label");
-        qLabel.textContent = "Rendimiento por pregunta";
-        section.appendChild(qLabel);
-
         section.appendChild(buildQuestionCards(data));
-
-        const chartLabel = document.createElement("p");
-        chartLabel.classList.add("stats-section-label");
-        chartLabel.textContent = "Correctas vs incorrectas";
-        section.appendChild(chartLabel);
-
         section.appendChild(buildChart(data));
 
-    } catch (err) {
-        console.error("Stats error:", err);
-        const errEl = document.createElement("p");
-        errEl.classList.add("stats-error");
-        errEl.textContent = "No se pudieron cargar las estadísticas.";
-        section.appendChild(errEl);
+    } catch (error) {
+        console.error("Error loading stats:", error);
+        section.innerHTML += `
+            <div style="
+              padding:2rem; text-align:center; color:rgba(255,255,255,.6);
+            ">
+              📊 Aún no hay datos de estadísticas
+            </div>
+        `;
     }
 
     return section;

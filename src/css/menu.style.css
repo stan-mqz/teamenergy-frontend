@@ -1,15 +1,16 @@
+/* ═══════════════════════════════════════════════
+   MENU — Aura Theme
+   Paleta oscura con acentos púrpura/cyan/pink
+═══════════════════════════════════════════════ */
+
 :root {
-    --bg-color: #f1f8ff;
-    --bg-soft: #f8fcff;
-    --card-bg: #ffffff;
-    --text-color: #24364b;
-    --text-muted: #5c6f82;
-    --accent-sky: #4f9fd8;
-    --accent-mint: #4ca97d;
-    --accent-sun: #f4bf4f;
-    --accent-coral: #e97a6d;
-    --border-soft: #d8e8f4;
-    --shadow-soft: rgba(63, 111, 150, .14);
+    --bg-color: #15141b;
+    --card-bg: #1d1b24;
+    --text-color: #edecee;
+    --text-muted: #6d6a75;
+    --accent-purple: #a277ff;
+    --accent-cyan: #61ffca;
+    --accent-pink: #ff79c6;
 }
 
 *,
@@ -21,12 +22,10 @@
 }
 
 body {
-    background:
-        linear-gradient(135deg, rgba(248, 252, 255, .96), rgba(239, 248, 244, .94) 52%, rgba(255, 249, 229, .9)),
-        var(--bg-color);
+    background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: clamp(16px, 4vw, 32px);
+    padding: 20px;
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -34,7 +33,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 820px;
+    max-width: 700px;
 }
 
 /* ── Header ──────────────────────────────────── */
@@ -45,10 +44,9 @@ header {
 }
 
 header h1 {
-    color: var(--accent-sky);
-    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    color: var(--accent-purple);
+    font-size: 2rem;
     margin-bottom: .4rem;
-    line-height: 1.1;
 }
 
 .header-sub {
@@ -59,26 +57,25 @@ header h1 {
 /* ── Grilla de lecciones ─────────────────────── */
 .lessons-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(12px, 2vw, 16px);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
     margin-top: 20px;
 }
 
 /* ── Tarjeta base ────────────────────────────── */
 .lesson-card {
-    background-color: var(--card-bg);
-    border: 1.5px solid var(--border-soft);
-    border-radius: 8px;
-    padding: clamp(16px, 3vw, 22px);
+    background-color: #111014;
+    border: 2px solid #2d2a38;
+    border-radius: 10px;
+    padding: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    min-height: 128px;
+    min-height: 120px;
     gap: 8px;
-    box-shadow: 0 12px 30px var(--shadow-soft);
-    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
+    transition: all .25s ease;
 }
 
 .lesson-number {
@@ -90,96 +87,50 @@ header h1 {
 }
 
 .lesson-card p {
-    font-size: clamp(.95rem, 2.4vw, 1.05rem);
-    font-weight: 700;
-    line-height: 1.35;
+    font-size: .95rem;
+    font-weight: 500;
 }
 
-.lesson-card.available {
-    cursor: default;
+/* ── Estado bloqueado ────────────────────────── */
+.lesson-card.locked {
+    opacity: .5;
+    cursor: not-allowed;
+    background-color: #16151a;
 }
 
-.lesson-card.available:hover {
-    transform: translateY(-3px);
-    border-color: rgba(76, 169, 125, .45);
-    box-shadow: 0 16px 34px rgba(63, 111, 150, .16);
+.lock-icon {
+    font-size: 1.1rem;
+    color: var(--text-muted);
 }
 
 /* ── Estado activo ───────────────────────────── */
 .lesson-card.active {
-    border-color: rgba(79, 159, 216, .58);
+    border-color: var(--accent-purple);
     cursor: pointer;
-    background: #f8fcff;
 }
 
 .lesson-card.active:hover {
     transform: translateY(-4px);
-    box-shadow: 0 18px 38px rgba(79, 159, 216, .2);
-    background-color: #eef8ff;
+    box-shadow: 0 6px 20px rgba(162, 119, 255, .2);
+    background-color: #211f2a;
 }
 
 .lesson-card.active .lesson-number {
-    color: var(--accent-sky);
+    color: var(--accent-cyan);
 }
 
 .action-badge {
     font-size: .75rem;
-    background-color: rgba(76, 169, 125, .13);
-    color: #32785a;
-    padding: 4px 10px;
-    border-radius: 8px;
+    background-color: rgba(97, 255, 202, .15);
+    color: var(--accent-cyan);
+    padding: 2px 10px;
+    border-radius: 12px;
     font-weight: 700;
 }
 
-.action-badge.muted {
-    background-color: rgba(244, 191, 79, .18);
-    color: #8a6419;
-}
-
 /* ── Responsive ──────────────────────────────── */
-@media (max-width: 760px) {
+@media (max-width: 600px) {
     .lessons-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-}
-
-@media (max-width: 460px) {
-    body {
-        align-items: flex-start;
-    }
-
-    header {
-        margin-bottom: 1.4rem;
-    }
-
-    .lessons-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .lesson-card {
-        min-height: 112px;
-    }
-}
-
-/* ── Tarjeta de estadísticas ─────────────────── */
-.lesson-card.stats-card {
-    text-decoration: none;
-    cursor: pointer;
-    border-color: rgba(185, 167, 232, .32);
-}
-
-.lesson-card.stats-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(118, 101, 168, .45);
-    box-shadow: 0 18px 38px rgba(118, 101, 168, .16);
-    background-color: #f7f5ff;
-}
-
-.lesson-card.stats-card .lesson-number {
-    color: var(--accent-sky);
-}
-
-.lesson-card.stats-card .action-badge {
-    background-color: rgba(185, 167, 232, .18);
-    color: #7665a8;
 }

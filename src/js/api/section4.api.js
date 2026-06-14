@@ -4,7 +4,7 @@ export async function getSections() {
 
     const response =
         await fetch(
-            `${API_URL}/api/section6`
+            `${API_URL}/api/section4`
         );
 
     return await response.json();
@@ -14,7 +14,7 @@ export async function getQuestions() {
 
     const response =
         await fetch(
-            `${API_URL}/api/section6/questions`
+            `${API_URL}/api/section4/questions`
         );
 
     return await response.json();
@@ -26,7 +26,7 @@ export async function validateAnswers(
 
     const response =
         await fetch(
-            `${API_URL}/api/section6/validate`,
+            `${API_URL}/api/section4/validate`,
             {
                 method: "POST",
                 headers: {
@@ -43,6 +43,6 @@ export async function validateAnswers(
 }
 
 export async function getStats() {
-    const response = await fetch(`${API_URL}/api/section6/stats`);
+    const response = await fetch(`${API_URL}/api/section4/stats`);
     return await response.json();
 }

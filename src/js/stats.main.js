@@ -1,11 +1,8 @@
 import "../css/section6.style.css";
 import "../css/stats.css";
 import "../css/glassmorphism-btn.css";
-import "../css/lesson.navigation.css";
 
 import { createStats } from "./components/section6.stats";
-import { createLessonNavigation } from "./components/lesson.navigation";
-import { createStats3, renderStats } from "./components/section3.stats";
 
 const homeBtn = document.createElement("a");
 homeBtn.classList.add("home-btn");
@@ -16,19 +13,19 @@ homeBtn.innerHTML = `
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M3 10.5L12 3L21 10.5V20C21 20.55 20.55 21 20 21H15V15H9V21H4C3.45 21 3 20.55 3 20V10.5Z"
-            stroke="currentColor"
+            stroke="rgba(255,255,255,0.9)"
             stroke-width="1.8"
             stroke-linejoin="round"
-            fill="rgba(79,159,216,0.08)"
+            fill="rgba(255,255,255,0.08)"
         />
     </svg>
 `;
 document.body.appendChild(homeBtn);
 
 async function loadStatsPage() {
-  const app = document.querySelector("#app");
+    const app = document.querySelector("#app");
 
-  app.innerHTML = `
+    app.innerHTML = `
         <div style="
             min-height: 100vh;
             display: flex;
@@ -36,7 +33,7 @@ async function loadStatsPage() {
             align-items: center;
             justify-content: center;
             gap: 1.2rem;
-            color: rgba(36,54,75,.58);
+            color: rgba(255,255,255,.5);
             font-family: 'Nunito', sans-serif;
         ">
             <div style="font-size: 4rem; animation: spin 2s linear infinite;">📊</div>
@@ -47,18 +44,9 @@ async function loadStatsPage() {
         <style>@keyframes spin { to { rotate: 360deg; } }</style>
     `;
 
-  const [stats6, stats3] = await Promise.all([createStats(), createStats3()]);
-
-  app.innerHTML = "";
-  app.appendChild(stats6);
-  app.appendChild(stats3);
-  //   const statsEl = await createStats();
-  //   const statsAppContainer = document.getElementById("stats-app");
-  //   renderStats(statsAppContainer);
-
-  //   app.innerHTML = "";
-  //   app.appendChild(statsEl);
-  //   app.appendChild(statsAppContainer)
+    const statsEl = await createStats();
+    app.innerHTML = "";
+    app.appendChild(statsEl);
 }
 
 loadStatsPage();

@@ -1,5 +1,4 @@
 import "../css/section6.style.css";
-import "../css/section5.style.css";
 import "../css/stats.css";
 
 import { createStats } from "./components/stats";
