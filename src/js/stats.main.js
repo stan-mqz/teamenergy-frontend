@@ -6,6 +6,9 @@ import "../css/lesson.navigation.css";
 import { createStats } from "./components/section6.stats";
 import { createLessonNavigation } from "./components/lesson.navigation";
 import { createStats3, renderStats } from "./components/section3.stats";
+import { createStats5 } from "./components/section5.stats";
+import { createStats4 } from "./components/section4.stats";
+
 
 const homeBtn = document.createElement("a");
 homeBtn.classList.add("home-btn");
@@ -47,11 +50,13 @@ async function loadStatsPage() {
         <style>@keyframes spin { to { rotate: 360deg; } }</style>
     `;
 
-  const [stats6, stats3] = await Promise.all([createStats(), createStats3()]);
+  const [stats6, stats3, stats5, stats4] = await Promise.all([createStats(), createStats3(), createStats5(), createStats4()]);
 
   app.innerHTML = "";
   app.appendChild(stats6);
   app.appendChild(stats3);
+  app.appendChild(stats5);
+  app.appendChild(stats4);
   //   const statsEl = await createStats();
   //   const statsAppContainer = document.getElementById("stats-app");
   //   renderStats(statsAppContainer);

@@ -225,7 +225,7 @@ function buildChart(data) {
  * Crea y retorna la sección completa de estadísticas
  * @returns {Promise<HTMLElement>}
  */
-export async function createStats() {
+export async function createStats5() {
     await loadChartJs();
 
     const section = document.createElement("section");
@@ -233,7 +233,7 @@ export async function createStats() {
 
     section.innerHTML = `
         <div class="stats-header">
-            <span class="stats-eyebrow">Transformaciones de la Energía</span>
+            <span class="stats-eyebrow">Sección 5 · Transformaciones de la Energía</span>
             <h2 class="stats-title">Estadísticas del quiz</h2>
         </div>
     `;

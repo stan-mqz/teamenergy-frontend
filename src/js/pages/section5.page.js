@@ -2,7 +2,7 @@ import { getSections } from '../api/section5.api';
 import { createHero } from '../components/section5.hero';
 import { createSection } from '../components/section5.section';
 import { createQuiz } from "../components/section5.quiz";
-import { createStats } from "../components/section5.stats";
+import { createStats5 } from "../components/section5.stats";
 import { createLessonNavigation } from "../components/lesson.navigation";
 
 
