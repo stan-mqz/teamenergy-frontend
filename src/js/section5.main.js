@@ -3,6 +3,8 @@ import "../css/section5.hero.css";
 import "../css/section5.sections.css";
 import "../css/section5.quiz.css";
 import "../css/glassmorphism-btn.css";
+import "../css/lesson.navigation.css";
+
 
 import { loadLightPage } from "./pages/section5.page";
 

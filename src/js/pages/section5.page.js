@@ -3,6 +3,7 @@ import { createHero } from '../components/section5.hero';
 import { createSection } from '../components/section5.section';
 import { createQuiz } from "../components/section5.quiz";
 import { createStats } from "../components/section5.stats";
+import { createLessonNavigation } from "../components/lesson.navigation";
 
 
 function showLoader(app) {
@@ -65,10 +66,13 @@ export async function loadLightPage() {
     });
     const quiz = await createQuiz();
     app.appendChild(quiz);
+    app.appendChild(createLessonNavigation(5));
 
 
   } catch (err) {
     console.error(err);
     showError(app);
   }
+
+
 }
