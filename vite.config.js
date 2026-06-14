@@ -11,7 +11,7 @@ export default defineConfig({
                 section5: resolve(__dirname, 'section5.html'),
                 stats: resolve(__dirname, "stats.html"),
                 section2: resolve(__dirname, "section2.html"),
-                
+                section4: resolve(__dirname, "section4.html"),
             },
         },
     },
