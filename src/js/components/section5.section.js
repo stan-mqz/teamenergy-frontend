@@ -14,7 +14,7 @@ const CONFIGS = {
           <div class="anim-sun-ring"></div>
           <div class="anim-sun-ring"></div>
           <div class="anim-sun-ring"></div>
-          <div class="anim-sun-core">☀️</div>
+          <div class="anim-sun-core">🌞</div>
         </div>
       `;
         },
@@ -44,7 +44,7 @@ const CONFIGS = {
             card.innerHTML = `
         <div class="anim-lamp-wrap">
           ${rays}
-          <div class="anim-lamp-core">💡</div>
+          <div class="anim-lamp-core">🔌</div>
         </div>
       `;
         },
@@ -68,7 +68,7 @@ const CONFIGS = {
             ];
             card.innerHTML = `
         <div class="anim-rainbow-wrap">
-          <div class="anim-prism">🔮</div>
+          <div class="anim-prism">🔋</div>
           <div class="anim-rainbow-bands">
             ${bands.map(b => `
               <div class="anim-band"
@@ -90,7 +90,7 @@ const CONFIGS = {
         buildVisual(card) {
             card.innerHTML = `
         <div class="anim-shadow-wrap">
-          <div class="anim-shadow-obj">📦</div>
+          <div class="anim-shadow-obj">⚙️</div>
           <div class="anim-shadow-ground"></div>
           <div class="anim-shadow-cast"></div>
         </div>
@@ -108,13 +108,13 @@ const CONFIGS = {
             card.innerHTML = `
         <div class="anim-glass-wrap">
           <div class="anim-glass-col">
-            <div class="anim-block opaque">📓</div>
-            <span class="anim-glass-label">Opaco</span>
+            <div class="anim-block opaque">🔥</div>
+            <span class="anim-glass-label">Caliente</span>
           </div>
           <div class="anim-arrow">→</div>
           <div class="anim-glass-col">
-            <div class="anim-block glass">🪟</div>
-            <span class="anim-glass-label">Transparente</span>
+            <div class="anim-block glass">🧊</div>
+            <span class="anim-glass-label">Frío</span>
           </div>
         </div>
       `;

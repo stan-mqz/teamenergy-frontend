@@ -591,36 +591,57 @@
 }
 
 /* ═══════════════════════════════════════════════
-   Sección de sombras: fondo claro
+   Fondos amigables (Kid-friendly) por subtema
 ═══════════════════════════════════════════════ */
 
+/* Colores de fondo suaves y alegres para cada tipo de energía */
+.planet-section[data-anim="sun"] {
+    background: linear-gradient(135deg, #FFFDE4 0%, #FFE5B4 100%);
+}
+.planet-section[data-anim="lamp"] {
+    background: linear-gradient(135deg, #E0FFFF 0%, #B2EBF2 100%);
+}
+.planet-section[data-anim="rainbow"] {
+    background: linear-gradient(135deg, #F1F8E9 0%, #C8E6C9 100%);
+}
 .planet-section[data-anim="shadow"] {
-    background: #ffffff;
+    background: linear-gradient(135deg, #FFF0F5 0%, #F8BBD0 100%);
+}
+.planet-section[data-anim="glass"] {
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFE0B2 100%);
 }
 
-.planet-section[data-anim="shadow"] .planet-title {
+/* Ajustes de color de texto para asegurar la legibilidad en fondos claros */
+.planet-section .planet-title {
     color: #111827;
+    text-shadow: none;
 }
 
-.planet-section[data-anim="shadow"] .planet-body {
-    color: rgba(17, 24, 39, 0.75);
+.planet-section .planet-body {
+    color: rgba(17, 24, 39, 0.85);
 }
 
-.planet-section[data-anim="shadow"] .fun-fact {
-    background: rgba(0, 0, 0, 0.04);
-    color: rgba(17, 24, 39, 0.75);
+.planet-section .planet-number {
+    color: rgba(17, 24, 39, 0.5);
 }
 
-.planet-section[data-anim="shadow"] .planet-tag {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.08);
+.planet-section .fun-fact {
+    background: rgba(255, 255, 255, 0.6);
     color: #111827;
+    border: 2px dashed rgba(0, 0, 0, 0.1);
 }
 
-.planet-section[data-anim="shadow"] .visual-card {
-    background: #f8fafc;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+.planet-section .planet-tag {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #111827;
+    font-weight: 700;
+}
+
+.planet-section .visual-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 3px solid rgba(255, 255, 255, 0.5);
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.08),
-        0 2px 8px rgba(0, 0, 0, 0.14);
+        0 12px 36px rgba(0, 0, 0, 0.08),
+        0 4px 12px rgba(0, 0, 0, 0.04);
 }

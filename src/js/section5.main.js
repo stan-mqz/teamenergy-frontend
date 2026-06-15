@@ -6,7 +6,7 @@ import "../css/glassmorphism-btn.css";
 import "../css/lesson.navigation.css";
 
 
-import { loadLightPage } from "./pages/section5.page";
+import { loadEnergyTransformationPage } from "./pages/section5.page";
 
 const homeBtn = document.createElement("a");
 homeBtn.classList.add("home-btn");
@@ -26,4 +26,4 @@ homeBtn.innerHTML = `
 `;
 document.body.appendChild(homeBtn);
 
-loadLightPage();
+loadEnergyTransformationPage();

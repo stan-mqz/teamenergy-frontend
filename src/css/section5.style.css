@@ -42,31 +42,10 @@ html {
 
 body {
     font-family: var(--font-body);
-    background: var(--night-deep);
-    color: var(--text-bright);
+    background: #eef8ff;
+    color: #111827;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-        radial-gradient(1px 1px at 12% 18%, rgba(255, 255, 255, .7) 0%, transparent 0%),
-        radial-gradient(1px 1px at 33% 72%, rgba(255, 255, 255, .5) 0%, transparent 0%),
-        radial-gradient(2px 2px at 55% 10%, rgba(255, 255, 255, .6) 0%, transparent 0%),
-        radial-gradient(1px 1px at 70% 45%, rgba(255, 255, 255, .4) 0%, transparent 0%),
-        radial-gradient(1px 1px at 88% 80%, rgba(255, 255, 255, .6) 0%, transparent 0%),
-        radial-gradient(1px 1px at 25% 55%, rgba(255, 255, 255, .3) 0%, transparent 0%),
-        radial-gradient(2px 2px at 78% 22%, rgba(255, 255, 255, .5) 0%, transparent 0%),
-        radial-gradient(1px 1px at 42% 90%, rgba(255, 255, 255, .4) 0%, transparent 0%),
-        radial-gradient(1px 1px at 60% 60%, rgba(255, 255, 255, .3) 0%, transparent 0%),
-        radial-gradient(1px 1px at 5% 40%, rgba(255, 255, 255, .5) 0%, transparent 0%),
-        radial-gradient(1px 1px at 95% 55%, rgba(255, 255, 255, .4) 0%, transparent 0%),
-        radial-gradient(2px 2px at 18% 88%, rgba(255, 255, 255, .3) 0%, transparent 0%);
-    pointer-events: none;
-    z-index: 0;
 }
 
 #app {

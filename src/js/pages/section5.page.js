@@ -16,7 +16,7 @@ function showLoader(app) {
     ">
       <div style="font-size:4rem;animation:spin 2s linear infinite;">☀️</div>
       <p style="font-size:.9rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;">
-        Cargando la luz...
+        Cargando transformaciones...
       </p>
     </div>
     <style>@keyframes spin{to{rotate:360deg}}</style>
@@ -46,7 +46,7 @@ function showError(app) {
   `;
 }
 
-export async function loadLightPage() {
+export async function loadEnergyTransformationPage() {
   const app = document.querySelector('#app');
   showLoader(app);
 
