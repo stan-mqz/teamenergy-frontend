@@ -8,14 +8,6 @@ const app = document.getElementById("app");
 let answers = [];
 let correctCount = 0;
 
-const correctAnswersMap = {
-  201: 1,
-  202: 2,
-  203: 1,
-  204: 0,
-  205: 0,
-};
-
 function foquitoHabla(texto) {
   const box = document.getElementById("foquito-text");
   if (box) {
@@ -327,7 +319,7 @@ function showQuestion(questions, index) {
       selectSound.play();
 
       const selected = Number(btn.dataset.value);
-      const correct = correctAnswersMap[q.id];
+      const correct = q.answerIndex;
 
       // guardar respuesta
       answers.push({
