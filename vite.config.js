@@ -12,6 +12,7 @@ export default defineConfig({
                 stats: resolve(__dirname, "stats.html"),
                 section2: resolve(__dirname, "section2.html"),
                 section4: resolve(__dirname, "section4.html"),
+                section1: resolve(__dirname, "section1.html"),
             },
         },
     },
