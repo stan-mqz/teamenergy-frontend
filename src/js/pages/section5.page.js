@@ -66,8 +66,31 @@ export async function loadEnergyTransformationPage() {
     });
     const quiz = await createQuiz();
     app.appendChild(quiz);
-    app.appendChild(createLessonNavigation(5));
 
+    // 1. Obtenemos el contenedor de navegación, le damos una clase única y lo agregamos
+    const nav = createLessonNavigation(5);
+    nav.classList.add("transform-theme-nav");
+    app.appendChild(nav);
+
+    // 2. Inyectamos los estilos "glassmorphism" oscuro solo para esta página
+    const style = document.createElement("style");
+    style.textContent = `
+      .transform-theme-nav .lesson-nav-btn {
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1.5px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+      .transform-theme-nav .lesson-nav-btn .lesson-nav-kicker { color: rgba(36, 54, 75, 0.65); }
+      .transform-theme-nav .lesson-nav-btn .lesson-nav-main { color: #FFD93D; }
+      .transform-theme-nav .lesson-nav-btn .lesson-nav-title { color: rgba(36, 54, 75, 0.9); }
+      .transform-theme-nav .lesson-nav-btn:not(.is-disabled):hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 217, 61, 0.4);
+      }
+    `;
+    document.head.appendChild(style);
 
   } catch (err) {
     console.error(err);
