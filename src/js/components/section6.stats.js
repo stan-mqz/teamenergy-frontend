@@ -225,7 +225,7 @@ function buildChart(data) {
  * Crea y retorna la sección completa de estadísticas
  * @returns {Promise<HTMLElement>}
  */
-export async function createStats() {
+export async function createStats6() {
     await loadChartJs();
 
     const section = document.createElement("section");
