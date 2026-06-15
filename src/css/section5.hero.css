@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════
+/* ═══════════════════════════════════════════════ */
 
 .hero {
     min-height: 100vh;
@@ -11,7 +11,7 @@
     position: relative;
     overflow: hidden;
     background: radial-gradient(ellipse 80% 60% at 50% 40%,
-            #1a1040 0%, #0a0a1a 70%);
+            #ffffff 0%, #eef8ff 70%);
 }
 
 /* Halo solar de fondo */
@@ -192,7 +192,7 @@
     font-size: clamp(1.5rem, 10vw, 8.5rem);
     line-height: 1.1;
     letter-spacing: -1px;
-    background: linear-gradient(135deg, #fff 20%, var(--sun) 60%, var(--sun-deep) 100%);
+    background: linear-gradient(135deg, #111827 20%, var(--sun-deep) 60%, var(--coral-deep) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -203,7 +203,7 @@
 .hero-subtitle {
     font-size: clamp(1rem, 2.5vw, 1.35rem);
     font-weight: 600;
-    color: var(--text-soft);
+    color: rgba(17, 24, 39, 0.75);
     max-width: 520px;
     line-height: 1.7;
     animation: fadeSlideUp .9s .4s ease both;
@@ -222,7 +222,7 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .35);
+    color: rgba(17, 24, 39, 0.4);
     animation: fadeSlideUp 1s 1s ease both;
 }
 
