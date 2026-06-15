@@ -40,3 +40,9 @@ export async function getLeaderboard() {
 
     return await response.json();
 }
+
+export async function fetchStats() {
+    const response = await fetch(`${API_URL}/api/section2/stats`);
+
+    return await response.json();
+}

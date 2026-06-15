@@ -8,6 +8,7 @@ import { createLessonNavigation } from "./components/lesson.navigation";
 import { createStats3, renderStats } from "./components/section3.stats";
 import { createStats5 } from "./components/section5.stats";
 import { createStats4 } from "./components/section4.stats";
+import { createStats2 } from "./components/section2.stats.js";
 
 
 const homeBtn = document.createElement("a");
@@ -50,9 +51,10 @@ async function loadStatsPage() {
         <style>@keyframes spin { to { rotate: 360deg; } }</style>
     `;
 
-  const [stats3, stats4, stats5, stats6] = await Promise.all([createStats3(), createStats4(), createStats5(), createStats()]);
+  const [stats2, stats3, stats4, stats5, stats6] = await Promise.all([createStats2(), createStats3(), createStats4(), createStats5(), createStats()]);
 
   app.innerHTML = "";
+  app.appendChild(stats2);
   app.appendChild(stats3);
   app.appendChild(stats4);
   app.appendChild(stats5);
