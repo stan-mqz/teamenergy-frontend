@@ -1,5 +1,11 @@
 import "../css/menu.style.css";
 
+const lesson1Btn = document.getElementById("lesson-1-btn");
+
+lesson1Btn.addEventListener("click", () => {
+    window.location.href = "/section1.html";
+});
+
 const lesson6Btn = document.getElementById("lesson-6-btn");
 
 lesson6Btn.addEventListener("click", () => {
