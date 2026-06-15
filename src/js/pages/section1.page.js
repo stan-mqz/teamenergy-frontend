@@ -1,8 +1,5 @@
 import { createQuiz } from '../components/section1.quiz.js';
-import { createStats } from '../components/section1.stats.js';
-import { createLessonNavigation } from '../components/lesson.navigation.js';
-import '../../css/lesson.navigation.css';
-
+import { createStats1 } from '../components/section1.stats.js';
 
 export async function loadMechanicsPage() {
     try {

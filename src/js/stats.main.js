@@ -3,12 +3,13 @@ import "../css/stats.css";
 import "../css/glassmorphism-btn.css";
 import "../css/lesson.navigation.css";
 
-import { createStats } from "./components/section6.stats";
-import { createLessonNavigation } from "./components/lesson.navigation";
-import { createStats3, renderStats } from "./components/section3.stats";
-import { createStats5 } from "./components/section5.stats";
-import { createStats4 } from "./components/section4.stats";
+import { createStats6 } from "./components/section6.stats.js";
+import { createLessonNavigation } from "./components/lesson.navigation.js";
+import { createStats3, renderStats } from "./components/section3.stats.js";
+import { createStats5 } from "./components/section5.stats.js";
+import { createStats4 } from "./components/section4.stats.js";
 import { createStats2 } from "./components/section2.stats.js";
+import { createStats1 } from "./components/section1.stats.js";
 
 
 const homeBtn = document.createElement("a");
@@ -51,9 +52,10 @@ async function loadStatsPage() {
         <style>@keyframes spin { to { rotate: 360deg; } }</style>
     `;
 
-  const [stats2, stats3, stats4, stats5, stats6] = await Promise.all([createStats2(), createStats3(), createStats4(), createStats5(), createStats()]);
+  const [stats1, stats2, stats3, stats4, stats5, stats6] = await Promise.all([createStats1(), createStats2(), createStats3(), createStats4(), createStats5(), createStats6()]);
 
   app.innerHTML = "";
+  app.appendChild(stats1);
   app.appendChild(stats2);
   app.appendChild(stats3);
   app.appendChild(stats4);
