@@ -1,8 +1,8 @@
 import { getQuestions, validateAnswers } from "../api/section1.api.js";
 
 export async function createQuiz() {
-    const startBtn    = document.getElementById("comenzar-btn");
-    const quizPanel   = document.querySelector(".section1-quiz-panel");
+    const startBtn  = document.getElementById("comenzar-btn");
+    const quizPanel = document.querySelector(".section1-quiz-panel");
     const progressBox = document.querySelector(".section1-progress-box");
 
     const raw = await getQuestions();
@@ -16,80 +16,72 @@ export async function createQuiz() {
     let current = 0;
     let score   = 0;
 
-    // ✅ Sin prompt de nombre — arranca directo
     startBtn.addEventListener("click", () => {
         renderQuestion();
     });
 
     function renderQuestion() {
-        const q = questions[current];
+        const q   = questions[current];
         const pct = ((current + 1) / questions.length) * 100;
 
-        progressBox.innerHTML = `
-            <div class="section1-progress-info">
-                <span>Pregunta ${current + 1} de ${questions.length}</span>
-            </div>
-            <div class="section1-bar-bg">
-                <div class="section1-bar-fill" style="width: ${pct}%"></div>
-            </div>
-        `;
-
         quizPanel.innerHTML = `
-            ${progressBox.outerHTML}
+            <div class="section1-progress-box">
+                <div class="section1-progress-info">
+                    <span>Pregunta ${current + 1} de ${questions.length}</span>
+                </div>
+                <div class="section1-bar-bg">
+                    <div class="section1-bar-fill" style="width: ${pct}%"></div>
+                </div>
+            </div>
+
             <h3 class="section1-question-text">${q.question}</h3>
+
             <div class="section1-options-list">
                 ${q.options.map((opt, i) => `
                     <div class="section1-option-item" data-index="${i}">${opt}</div>
                 `).join('')}
             </div>
-            <button class="btn-section1-validate" id="validate-btn" disabled>
-                Validar respuesta
-            </button>
         `;
 
-        let selectedIndex = null;
-        const optionEls   = quizPanel.querySelectorAll(".section1-option-item");
-        const validateBtn = quizPanel.querySelector("#validate-btn");
+        const optionEls = quizPanel.querySelectorAll(".section1-option-item");
 
         optionEls.forEach(el => {
-            el.addEventListener("click", () => {
-                optionEls.forEach(o => o.classList.remove("selected"));
-                el.classList.add("selected");
-                selectedIndex = Number(el.dataset.index);
-                validateBtn.disabled = false;
-            });
-        });
+            el.addEventListener("click", async () => {
+                // Evitar doble click
+                optionEls.forEach(o => o.style.pointerEvents = "none");
 
-        validateBtn.addEventListener("click", async () => {
-            validateBtn.disabled = true;
+                const selectedIndex = Number(el.dataset.index);
 
-            // Enviar al backend — sin nombre
-            await validateAnswers(
-                "Anónimo",
-                [{ questionId: q.id, selectedIndex }]
-            );
+                // Feedback visual inmediato
+                const wasCorrect = selectedIndex === q.answerIndex;
+                if (wasCorrect) score++;
 
-            const wasCorrect = selectedIndex === q.answerIndex;
-            if (wasCorrect) score++;
+                optionEls.forEach(o => {
+                    const idx = Number(o.dataset.index);
+                    if (idx === q.answerIndex)                 o.classList.add("section1-option-item--correct");
+                    if (!wasCorrect && idx === selectedIndex)  o.classList.add("section1-option-item--incorrect");
+                });
 
-            optionEls.forEach(el => {
-                const idx = Number(el.dataset.index);
-                if (idx === q.answerIndex)              el.classList.add("correct");
-                if (!wasCorrect && idx === selectedIndex) el.classList.add("incorrect");
-            });
+                // Enviar al backend en segundo plano
+                validateAnswers(
+                    "Anónimo",
+                    [{ questionId: q.id, selectedIndex }]
+                ).catch(err => console.error("Error al validar:", err));
 
-            validateBtn.textContent = current < questions.length - 1
-                ? "Siguiente →"
-                : "Ver resultado";
-            validateBtn.disabled = false;
+                // Botón siguiente aparece debajo
+                const nextBtn = document.createElement("button");
+                nextBtn.className = "btn-section1-validate";
+                nextBtn.textContent = current < questions.length - 1
+                    ? "Siguiente →"
+                    : "Ver resultado";
 
-            validateBtn.replaceWith(validateBtn.cloneNode(true));
-            const nextBtn = quizPanel.querySelector("#validate-btn");
+                quizPanel.appendChild(nextBtn);
 
-            nextBtn.addEventListener("click", () => {
-                current++;
-                if (current >= questions.length) renderResult();
-                else renderQuestion();
+                nextBtn.addEventListener("click", () => {
+                    current++;
+                    if (current >= questions.length) renderResult();
+                    else renderQuestion();
+                });
             });
         });
     }
@@ -110,7 +102,7 @@ export async function createQuiz() {
                 <p style="color: #a0a5c1; font-size: 1.1rem;">
                     ${score === questions.length
                         ? "¡Excelente! ¡Respuestas perfectas! 🌟"
-                        : score >= questions.length / 2
+                        : score >= Math.ceil(questions.length / 2)
                             ? "¡Muy bien! Sigue practicando. 💪"
                             : "¡Ánimo! Puedes volver a intentarlo. 🔄"}
                 </p>

@@ -44,16 +44,20 @@ export function createLessonNavigation(currentLesson) {
         return nav;
     }
 
+
     const previous = LESSONS[currentIndex - 1];
     const next = LESSONS[currentIndex + 1];
 
     if (previous) {
         nav.appendChild(createButton("previous", previous));
-    }   
+    }
 
     if (next) {
         nav.appendChild(createButton("next", next));
     }
-
+    
+    if (!previous && next) {
+        nav.classList.add("only-next");
+    }
     return nav;
 }

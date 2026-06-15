@@ -6,6 +6,11 @@
     margin: 0 auto 4rem;
 }
 
+.lesson-nav.only-next {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .lesson-nav-btn {
     min-height: 92px;
     padding: 1rem 1.1rem;
