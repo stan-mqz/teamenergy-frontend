@@ -163,6 +163,14 @@ export async function createQuiz() {
                     ${result.correct_answers}
                 </p>
 
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center;">
+                    <button class="quiz-submit" style="margin:0; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: white;" onclick="window.location.reload()">
+                        🔁 Reintentar
+                    </button>
+                    <button class="quiz-submit" style="margin:0;" onclick="window.location.href='/section3.html'">
+                        Siguiente ➡️
+                    </button>
+                </div>
             </div>
 
         `;
