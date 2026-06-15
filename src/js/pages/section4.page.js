@@ -66,8 +66,32 @@ export async function loadWaterPage() {
     });
     const quiz = await createQuiz();
     app.appendChild(quiz);
-    app.appendChild(createLessonNavigation(4));
+    
+    // 1. Obtenemos el contenedor de navegación, le damos una clase única y lo agregamos
+    const nav = createLessonNavigation(4);
+    nav.classList.add("water-theme-nav");
+    app.appendChild(nav);
 
+    // 2. Inyectamos los estilos "glassmorphism" de agua solo para esta página
+    const style = document.createElement("style");
+    style.textContent = `
+      .water-theme-nav .lesson-nav-btn {
+          background: rgba(230, 245, 255, 0.6);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1.5px solid rgba(79, 159, 216, 0.25);
+          box-shadow: 0 8px 24px rgba(63, 111, 150, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      }
+      .water-theme-nav .lesson-nav-btn .lesson-nav-kicker { color: rgba(36, 54, 75, .65); }
+      .water-theme-nav .lesson-nav-btn .lesson-nav-main { color: #0284c7; }
+      .water-theme-nav .lesson-nav-btn .lesson-nav-title { color: rgba(36, 54, 75, .85); }
+      .water-theme-nav .lesson-nav-btn:not(.is-disabled):hover {
+          background: rgba(215, 238, 255, 0.8);
+          border-color: rgba(79, 159, 216, 0.5);
+          box-shadow: 0 12px 32px rgba(63, 111, 150, 0.15), inset 0 1.5px 0 rgba(255, 255, 255, 0.5);
+      }
+    `;
+    document.head.appendChild(style);
 
   } catch (err) {
     console.error(err);
