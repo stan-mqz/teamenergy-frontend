@@ -1,13 +1,11 @@
-// src/js/api/section3.api.js
-
-const API_BASE_URL = "http://localhost:3000/api/section3";
+import { API_URL } from "../config.js";
 
 /**
  * Obtiene las preguntas del Tema 3 (Energía Térmica)
  */
 export const fetchQuestions = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/questions`);
+    const response = await fetch(`${API_URL}/api/section3/questions`);
 
     if (!response.ok) throw new Error("Error al obtener preguntas");
     return await response.json();
@@ -24,7 +22,7 @@ export const fetchQuestions = async () => {
  */
 export const validateAnswers = async (answers) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/validate`, {
+    const response = await fetch(`${API_URL}/api/section3/validate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +43,7 @@ export const validateAnswers = async (answers) => {
  */
 export const fetchStats = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/stats`);
+    const response = await fetch(`${API_URL}/api/section3/stats`);
     if (!response.ok) throw new Error("Error al obtener estadísticas");
     return await response.json();
   } catch (error) {
