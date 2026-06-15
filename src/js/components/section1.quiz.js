@@ -1,12 +1,10 @@
 import { getQuestions, validateAnswers } from "../api/section1.api.js";
 
 export async function createQuiz() {
-    // Agarramos los elementos que YA existen en el HTML
     const startBtn    = document.getElementById("comenzar-btn");
     const quizPanel   = document.querySelector(".section1-quiz-panel");
     const progressBox = document.querySelector(".section1-progress-box");
 
-    // Cargamos preguntas desde el backend
     const raw = await getQuestions();
     const questions = Array.isArray(raw) ? raw : (raw.data ?? []);
 
@@ -17,30 +15,25 @@ export async function createQuiz() {
 
     let current = 0;
     let score   = 0;
-    let studentName = "";
 
-    // Click en "Comenzar" → pedir nombre y arrancar
+    // ✅ Sin prompt de nombre — arranca directo
     startBtn.addEventListener("click", () => {
-        studentName = prompt("Ingresa tu nombre para registrar tu puntaje:") || "Estudiante";
         renderQuestion();
     });
 
     function renderQuestion() {
         const q = questions[current];
-
-        // Actualizar barra de progreso
         const pct = ((current + 1) / questions.length) * 100;
+
         progressBox.innerHTML = `
             <div class="section1-progress-info">
                 <span>Pregunta ${current + 1} de ${questions.length}</span>
-                <span class="meta-text">${studentName}</span>
             </div>
             <div class="section1-bar-bg">
                 <div class="section1-bar-fill" style="width: ${pct}%"></div>
             </div>
         `;
 
-        // Renderizar pregunta y opciones en el panel derecho
         quizPanel.innerHTML = `
             ${progressBox.outerHTML}
             <h3 class="section1-question-text">${q.question}</h3>
@@ -55,16 +48,12 @@ export async function createQuiz() {
         `;
 
         let selectedIndex = null;
-        const optionEls  = quizPanel.querySelectorAll(".section1-option-item");
+        const optionEls   = quizPanel.querySelectorAll(".section1-option-item");
         const validateBtn = quizPanel.querySelector("#validate-btn");
 
         optionEls.forEach(el => {
             el.addEventListener("click", () => {
-                optionEls.forEach(o => {
-                    o.classList.remove("selected");
-                    o.style.border = "";
-                    o.style.background = "";
-                });
+                optionEls.forEach(o => o.classList.remove("selected"));
                 el.classList.add("selected");
                 selectedIndex = Number(el.dataset.index);
                 validateBtn.disabled = false;
@@ -74,38 +63,33 @@ export async function createQuiz() {
         validateBtn.addEventListener("click", async () => {
             validateBtn.disabled = true;
 
-            // Enviamos al backend para guardar en BD
+            // Enviar al backend — sin nombre
             await validateAnswers(
-                studentName,
+                "Anónimo",
                 [{ questionId: q.id, selectedIndex }]
             );
 
-            // Feedback visual
             const wasCorrect = selectedIndex === q.answerIndex;
             if (wasCorrect) score++;
 
             optionEls.forEach(el => {
                 const idx = Number(el.dataset.index);
-                if (idx === q.answerIndex)  el.classList.add("correct");
+                if (idx === q.answerIndex)              el.classList.add("correct");
                 if (!wasCorrect && idx === selectedIndex) el.classList.add("incorrect");
             });
 
-            // Cambiar botón a "Siguiente"
             validateBtn.textContent = current < questions.length - 1
                 ? "Siguiente →"
                 : "Ver resultado";
             validateBtn.disabled = false;
 
-            validateBtn.replaceWith(validateBtn.cloneNode(true)); // limpiar listener
+            validateBtn.replaceWith(validateBtn.cloneNode(true));
             const nextBtn = quizPanel.querySelector("#validate-btn");
 
             nextBtn.addEventListener("click", () => {
                 current++;
-                if (current >= questions.length) {
-                    renderResult();
-                } else {
-                    renderQuestion();
-                }
+                if (current >= questions.length) renderResult();
+                else renderQuestion();
             });
         });
     }
