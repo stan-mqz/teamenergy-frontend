@@ -1,0 +1,159 @@
+/* ═══════════════════════════════════════════════
+   SECTION 1: QUIZ — "El Panel de Evaluación"
+   Paleta: Fondo noche intermedio + Acentos Verde Mint
+   ═══════════════════════════════════════════════ */
+
+/* Panel Derecho: Contenedor principal de tus preguntas */
+.s1-panel-right {
+    flex: 1;
+    background-color: var(--s1-panel-dark); /* Cambiado a tu fondo oscuro amigable */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* ── Bloque de Progreso Superior ──────────────── */
+.s1-progress-container {
+    width: 100%;
+}
+
+.s1-progress-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    margin-bottom: 12px;
+}
+
+/* Detalle dinámico del puntaje y metadatos */
+.s1-progress-info .s1-meta {
+    font-size: 0.85rem;
+    color: var(--sun); /* Cambiado al amarillo brillante infantil */
+}
+
+/* Barra de progreso adaptada (Mantiene la estructura de píldora) */
+.s1-bar-track {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+
+.s1-bar-fill {
+    width: 50%; /* Controlado dinámicamente por JS */
+    height: 100%;
+    background-color: var(--sky); /* Cambiado al celeste lúdico */
+    border-radius: var(--radius-pill);
+    transition: width 0.3s ease;
+}
+
+/* ── Enunciado de la Pregunta ─────────────────── */
+.s1-question {
+    font-family: var(--font-body);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin: 20px 0;
+    text-align: left; /* Alineación izquierda idéntica a la maqueta */
+    line-height: 1.35;
+}
+
+/* ── Pila Vertical de Respuestas ──────────────── */
+.s1-answers-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+    width: 100%;
+}
+
+/* Tarjeta de opción individual (Estructura optimizada de tu compañero) */
+.s1-answer-card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 2px solid transparent;
+    border-radius: 14px;
+    padding: 18px 22px;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.s1-answer-card:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+/* ── Estados de Interacción (Clases de control de tu compañero) ── */
+
+/* Opción seleccionada por el alumno */
+.s1-answer-card.active,
+.s1-answer-card.selected {
+    border-color: var(--sky); /* Cambiado al celeste para resaltar la selección */
+    background-color: rgba(56, 189, 248, 0.12); /* Fondo celeste sutil */
+}
+
+/* Estado Correcto (Adaptado con la paleta de éxito del grupo) */
+.s1-answer-card.correct {
+    background-color: rgba(0, 229, 160, 0.15); /* Cambiado al verde menta alegre */
+    border-color: var(--mint);
+}
+
+/* Estado Incorrecto (Adaptado con la paleta de error del grupo) */
+.s1-answer-card.incorrect {
+    background-color: rgba(255, 107, 107, 0.15); /* Cambiado al coral suave de error */
+    border-color: var(--coral);
+}
+
+/* ── Gatillos de Control Inferiores ───────────── */
+
+/* Botón "Validar respuestas" posicionado a la derecha */
+.s1-btn-validate {
+    font-family: var(--font-body);
+    background-color: var(--sky-deep); /* Cambiado al azul dinámico llamativo */
+    color: var(--text-bright);
+    border: none;
+    border-radius: 10px;
+    padding: 14px 35px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    align-self: flex-end; /* Lo empuja exactamente a la esquina inferior derecha */
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.s1-btn-validate:hover {
+    background-color: var(--sky); /* Cambiado al celeste al pasar el cursor */
+}
+
+.s1-btn-validate:active {
+    transform: scale(0.98);
+}
+
+.s1-btn-validate:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Contenedor opcional para vistas de puntaje final */
+.s1-quiz-score {
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--sun); /* Conservado amarillo sol radiante */
+    margin: 2rem 0;
+}

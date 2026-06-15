@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sección 1 • Energía Mecánica</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/section1.style.css">
+</head>
+<body>
+
+    <a href="index.html" class="floating-home-btn" style="position: absolute; top: 20px; left: 20px; background: white; padding: 10px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-decoration: none; font-size: 1.2rem; z-index: 10;">🏠</a>
+
+    <div id="app">
+        <div class="section1-container">
+            
+            <div class="section1-intro-panel">
+                <div style="text-align: center; width: 100%;">
+                    <span class="main-title" style="display: block; font-weight: 800; font-size: 2.2rem; margin-bottom: 5px;">MECÁNICA</span>
+                    <h2 class="subtitle" style="font-size: 1.2rem; margin-top: 0; font-weight: 600;">¡Aprende sobre la energía mecánica!</h2>
+                </div>
+                
+              <div class="section1-graphics" style="max-height: 350px;">
+    <img src="/cientifico_pendulo.jpeg" alt="Científico" style="height: 100%; width: auto;">
+</div>
+                
+                <button class="btn-section1-start" id="comenzar-btn">
+                    Comenzar
+                </button>
+            </div>
+            
+            <div class="section1-quiz-panel">
+                <div class="section1-progress-box">
+                    <div class="section1-progress-info">
+                        <span>Esperando inicio...</span>
+                    </div>
+                    <div class="section1-bar-bg">
+                        <div class="section1-bar-fill"></div>
+                    </div>
+                </div>
+                <h3 class="section1-question-text">Presiona "Comenzar" para iniciar el aprendizaje.</h3>
+            </div>
+            
+        </div>
+    </div>
+
+    <script type="module" src="src/js/section1.main.js"></script>
+</body>
+</html>

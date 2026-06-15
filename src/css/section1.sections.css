@@ -1,0 +1,176 @@
+/* ═══════════════════════════════════════════════
+   SECTION 1: SECTIONS — Ensamblaje e Intersección
+   Paleta: Envolturas globales aisladas y entrada fluida
+   ═══════════════════════════════════════════════ */
+
+/* ── Envoltura General de la Sección 1 ─────────────────── */
+.s1-planet-section {
+    min-height: calc(100vh - 80px);
+    display: grid;
+    grid-template-columns: 1.1fr 1fr; /* Mantiene la proporción asimétrica exacta */
+    align-items: stretch; /* Estira ambos paneles para que tengan la misma altura */
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    
+    /* Configuración de Entrada por Scroll idéntica a S6 */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Estado activo cuando el observador de JS detecta la sección en pantalla */
+.s1-planet-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Fondos Orgánicos con Blobs Mutables (Heredado de S6) ── */
+.s1-planet-section::before {
+    content: '';
+    position: absolute;
+    width: min(500px, 90vw);
+    height: min(500px, 90vw);
+    border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+    animation: s1BlobMorph 12s ease-in-out infinite alternate;
+    background: var(--blob, var(--sky)); /* Toma por defecto el celeste escolar */
+}
+
+/* Posicionamiento del blob a la izquierda del área de juego */
+.s1-planet-section::before {
+    left: -10%;
+    top: 20%;
+}
+
+@keyframes s1BlobMorph {
+    0% {
+        border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+    }
+    50% {
+        border-radius: 40% 60% 45% 55% / 55% 45% 55% 45%;
+    }
+    100% {
+        border-radius: 55% 45% 40% 60% / 60% 40% 45% 55%;
+    }
+}
+
+/* ── Inyecciones de Color Dinámicas por Atributo [data-anim] ── */
+[data-anim="mechanics"] {
+    --accent: var(--mint);        /* Verde menta alegre para aciertos mecánicos */
+    --accent-deep: var(--mint-deep);
+    --blob: var(--sky);           /* Celeste lúdico de fondo */
+}
+
+[data-anim="energy"] {
+    --accent: var(--sun);         /* Amarillo radiante para energía en movimiento */
+    --accent-deep: var(--sky);    /* Celeste complementario combinable */
+    --blob: var(--sky);           /* Mantiene la armonía del planeta sin usar tonos opacos */
+}
+
+/* ── Animaciones Internas Al Entrar en Vista ────────────────── */
+.s1-planet-section.in-view .s1-panel-left {
+    animation: s1SlideFromLeft 0.7s 0.1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.s1-planet-section.in-view .s1-panel-right {
+    animation: s1SlideFromRight 0.7s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes s1SlideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes s1SlideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ── Elementos de Texto y Tags Educativos ──────────────── */
+.s1-planet-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    text-align: left;
+}
+
+/* Píldoras de etiquetas de datos o categorías */
+.s1-planet-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0.5rem;
+}
+
+.s1-planet-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.s1-planet-tag:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--accent); /* Se ilumina dinámicamente con el acento infantil de la tarjeta */
+    transform: translateY(-2px);
+}
+
+/* Caja de datos curiosos (Dato Curioso / Fun Fact) del panel */
+.s1-fun-fact {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 4px solid var(--accent, var(--mint)); /* Borde dinámico con el color de éxito */
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text-soft);
+    margin-top: 0.8rem;
+}
+
+.s1-fun-fact-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* ── Adaptabilidad del Layout (Mobile Stack) ────────────────── */
+@media (max-width: 850px) {
+    .s1-planet-section {
+        grid-template-columns: 1fr;
+        align-items: center;
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+
+    .s1-planet-section::before {
+        display: none; /* Desactiva blobs pesados en móviles para mejorar rendimiento */
+    }
+}
