@@ -3,6 +3,7 @@
    ========================================================================== */
 .section1-container {
   display: flex;
+  flex-direction: row;
   width: 100%;
   max-width: 1024px;
   min-height: 580px;
@@ -19,20 +20,19 @@
    ========================================================================== */
 .section1-intro-panel {
   flex: 1;
-  /* 🎨 Fondo corregido: Azul cielo arriba (60%) y blanco/celeste plano abajo donde pisa el señor */
   background: linear-gradient(180deg, #92cbff 60%, #e3f2fd 60%);
   padding: 40px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Distribuye título arriba, ilustración al medio, botón abajo */
+  justify-content: space-between;
   text-align: center;
   position: relative;
-  
-  /* 📐 Bordes redondeados del lado izquierdo para que se unan estéticamente al panel del juego */
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  overflow: hidden; /* Esto evita que la imagen o el fondo se salgan de las esquinas redondeadas */
+  overflow: hidden;
+  /* Garantiza que el botón siempre sea visible */
+  min-height: 400px;
 }
 
 .section1-intro-panel .main-title {
@@ -47,12 +47,12 @@
 
 .section1-intro-panel .subtitle {
   font-size: 1.4rem;
-  color: #fff176; /* Amarillo brillante para el subtítulo */
+  color: #fff176;
   font-weight: 600;
   margin: 0;
 }
 
-/* Contenedor para tus gráficos o imágenes (Científico + Péndulo) */
+/* Contenedor de imagen */
 .section1-graphics {
   flex: 1;
   width: 100%;
@@ -61,10 +61,18 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  min-height: 250px;
+  min-height: 200px;
+  /* Evita que la imagen empuje el botón fuera del panel */
+  overflow: hidden;
 }
 
-/* El botón azul "Comenzar" */
+.section1-graphics img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* El botón "Comenzar" — siempre al fondo del panel */
 .btn-section1-start {
   background-color: #4466f2;
   color: #ffffff;
@@ -76,6 +84,9 @@
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(68, 102, 242, 0.3);
   transition: transform 0.2s ease, background-color 0.2s ease;
+  /* Nunca se encoge */
+  flex-shrink: 0;
+  margin-top: 16px;
 }
 
 .btn-section1-start:hover {
@@ -84,18 +95,17 @@
 }
 
 /* ==========================================================================
-   Columna Derecha (Panel del Quiz / Preguntas)
+   Columna Derecha (Panel del Quiz)
    ========================================================================== */
 .section1-quiz-panel {
   flex: 1;
-  background-color: #262a41; /* Azul oscuro idéntico a la captura */
+  background-color: #262a41;
   color: #ffffff;
   padding: 40px;
   display: flex;
   flex-direction: column;
 }
 
-/* Encabezado de Progreso */
 .section1-progress-box {
   margin-bottom: 30px;
 }
@@ -111,7 +121,7 @@
 
 .section1-progress-info .meta-text {
   font-size: 0.85rem;
-  color: #81c784; /* Verde del texto secundario */
+  color: #81c784;
 }
 
 .section1-bar-bg {
@@ -123,13 +133,12 @@
 }
 
 .section1-bar-fill {
-  width: 50%; /* Controla el progreso desde tu JS aquí */
+  width: 50%;
   height: 100%;
   background-color: #7bc786;
   border-radius: 10px;
 }
 
-/* Texto de la Pregunta Principal */
 .section1-question-text {
   font-size: 1.65rem;
   font-weight: 600;
@@ -137,7 +146,6 @@
   line-height: 1.3;
 }
 
-/* Contenedor y Tarjetas de Opciones */
 .section1-options-list {
   display: flex;
   flex-direction: column;
@@ -146,7 +154,7 @@
 }
 
 .section1-option-item {
-  background-color: #1c1f33; /* Fondo más oscuro para los bloques de opciones */
+  background-color: #1c1f33;
   border: 2px solid transparent;
   border-radius: 12px;
   padding: 18px 20px;
@@ -160,15 +168,13 @@
   background-color: #2a2f4c;
 }
 
-/* Estado cuando una opción es seleccionada activamente (vía JS o CSS clases) */
 .section1-option-item.selected {
   border-color: #4db6ac;
   background-color: #192735;
 }
 
-/* Botón "Validar respuestas" */
 .btn-section1-validate {
-  background-color: #4db6ac; /* Verde menta/agua */
+  background-color: #4db6ac;
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -176,8 +182,9 @@
   font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
-  align-self: flex-end; /* Lo empuja a la esquina inferior derecha */
+  align-self: flex-end;
   margin-top: 20px;
+  flex-shrink: 0;
   box-shadow: 0 4px 12px rgba(77, 182, 172, 0.2);
   transition: background-color 0.2s ease;
 }
@@ -186,6 +193,11 @@
   background-color: #3b9c92;
 }
 
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* ── Tablet (769px – 1024px): sigue en fila, sólo ajusta tamaños ───────── */
 @media (max-width: 1024px) {
 
   .section1-container {
@@ -204,93 +216,127 @@
   .section1-intro-panel .subtitle {
     font-size: 1.2rem;
   }
-}
-/* 
 
+  .section1-graphics {
+    min-height: 180px;
+  }
+
+  .section1-question-text {
+    font-size: 1.45rem;
+  }
+}
+
+/* ── Mobile grande (481px – 768px): apila paneles verticalmente ─────────── */
 @media (max-width: 768px) {
 
   .section1-container {
     flex-direction: column;
+    max-width: calc(100% - 20px);
+    margin: 10px auto;
     min-height: auto;
+    border-radius: 12px;
   }
 
-  .section1-intro-panel,
+  /* Intro arriba: bordes redondeados sólo arriba */
+  .section1-intro-panel {
+    width: 100%;
+    flex: none;
+    padding: 28px 20px;
+    border-radius: 12px 12px 0 0;
+    /* Altura fija para que el botón siempre sea visible */
+    min-height: 320px;
+  }
+
+  /* Quiz abajo: bordes redondeados sólo abajo */
   .section1-quiz-panel {
     width: 100%;
-  }
-
-  .section1-intro-panel {
-    padding: 2rem;
+    flex: none;
+    padding: 28px 20px;
+    border-radius: 0 0 12px 12px;
   }
 
   .section1-intro-panel .main-title {
     font-size: 2rem;
-  }
-
-  .section1-intro-panel .subtitle {
-    font-size: 1rem;
-  }
-
-  .section1-question-text {
-    font-size: 1.35rem;
-  }
-
-  .btn-section1-start,
-  .btn-section1-validate {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .section1-container {
-    margin: 10px;
-    border-radius: 12px;
-  }
-
-  .section1-intro-panel,
-  .section1-quiz-panel {
-    padding: 20px;
-  }
-
-  .section1-intro-panel .main-title {
-    font-size: 1.6rem;
     letter-spacing: 1px;
   }
 
   .section1-intro-panel .subtitle {
-    font-size: .95rem;
+    font-size: 1.05rem;
+  }
+
+  .section1-graphics {
+    min-height: 140px;
+    max-height: 180px;
   }
 
   .section1-question-text {
-    font-size: 1.15rem;
-  }
-
-  .section1-option-item {
-    padding: 14px;
-    font-size: .95rem;
+    font-size: 1.3rem;
   }
 
   .btn-section1-start,
   .btn-section1-validate {
-    font-size: 1rem;
-    padding: 12px;
+    width: 100%;
+    text-align: center;
   }
 }
 
-@media (max-width: 768px) {
+/* ── Mobile pequeño (≤ 480px) ───────────────────────────────────────────── */
+@media (max-width: 480px) {
 
   .section1-container {
-    display: flex;
-    flex-direction: column;
-    min-height: auto;
+    max-width: calc(100% - 16px);
+    margin: 8px auto;
+    border-radius: 10px;
   }
 
-  .section1-intro-panel,
+  .section1-intro-panel {
+    padding: 20px 16px;
+    min-height: 280px;
+    border-radius: 10px 10px 0 0;
+  }
+
   .section1-quiz-panel {
-    width: 100%;
-    flex: none;
-    position: relative;
+    padding: 20px 16px;
+    border-radius: 0 0 10px 10px;
   }
 
-} */
+  .section1-intro-panel .main-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+  }
+
+  .section1-intro-panel .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .section1-graphics {
+    min-height: 110px;
+    max-height: 150px;
+  }
+
+  .section1-question-text {
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+  }
+
+  .section1-option-item {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  .section1-progress-info {
+    font-size: 0.85rem;
+  }
+
+  .btn-section1-start {
+    font-size: 1rem;
+    padding: 12px 16px;
+  }
+
+  .btn-section1-validate {
+    font-size: 1rem;
+    padding: 12px 16px;
+    align-self: stretch;
+  }
+}
